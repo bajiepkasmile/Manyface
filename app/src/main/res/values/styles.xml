@@ -1,0 +1,99 @@
+<resources>
+
+    <style name="FocusRecipient">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <style name="AppButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/primary</item>
+    </style>
+
+    <style name="EditTextAuthorization">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="EditTextAuthorization.Login" parent="EditTextAuthorization">
+        <item name="android:hint">@string/login</item>
+        <item name="android:inputType">textPersonName</item>
+    </style>
+
+    <style name="EditTextAuthorization.Password" parent="EditTextAuthorization">
+        <item name="android:hint">@string/password</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="EditTextAuthorization.PasswordConfirmation" parent="EditTextAuthorization">
+        <item name="android:hint">@string/password_confirmation</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="TextViewAuthorizationError">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="ButtonAuthorization">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/primary</item>
+    </style>
+
+    <style name="TextViewUserItem">
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="TextViewUserItem.Username" parent="TextViewUserItem">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextViewUserItem.Description" parent="TextViewUserItem">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="EditTextEditableUser">
+        <item name="android:padding">4dp</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="EditTextEditableUser.Username" parent="EditTextEditableUser">
+        <item name="android:hint">@string/username</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:inputType">textPersonName</item>
+    </style>
+
+    <style name="EditTextEditableUser.Description" parent="EditTextEditableUser">
+        <item name="android:hint">@string/description</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:inputType">none</item>
+    </style>
+
+
+
+    <style name="TextViewMessagesCount">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:background">@drawable/background_messages_count</item>
+    </style>
+
+    <!--<style name="ButtonUserItem" parent="Widget.AppCompat.Button.Borderless">-->
+        <!--<item name="android:textColor">@color/primary_dark</item>-->
+        <!--<item name="android:minWidth">0dp</item>-->
+        <!--<item name="android:minHeight">0dp</item>-->
+        <!--<item name="android:padding">12dp</item>-->
+    <!--</style>-->
+
+</resources>

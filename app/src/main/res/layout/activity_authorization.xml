@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/white"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_logo_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:background="@color/primary"
+        android:elevation="4dp"
+        tools:layout_height="@dimen/login_toolbar_height"
+        >
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/logo"
+            tools:layout_width="@dimen/logo_size"
+            tools:layout_height="@dimen/logo_size"
+            tools:layout_marginBottom="@dimen/logo_margin_bottom"
+            />
+
+        <com.nodomain.manyface.ui.customviews.AuthorizationTabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            app:tabTextColor="@color/transparent_white"
+            app:tabSelectedTextColor="@color/white"
+            app:tabIndicatorColor="@color/white"
+            app:tabBackground="@color/primary"
+            app:tabMode="fixed"
+            />
+
+    </FrameLayout>
+
+    <com.nodomain.manyface.ui.customviews.AuthorizationViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

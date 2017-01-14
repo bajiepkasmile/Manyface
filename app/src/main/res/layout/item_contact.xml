@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="8dp"
+    >
+
+    <com.nodomain.manyface.ui.customviews.RoundedImageView
+        android:id="@+id/iv_contact_photo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/photo_placeholder"
+        android:layout_marginRight="4dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_contact_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        tools:text="asddfsdg"
+        />
+
+</LinearLayout>

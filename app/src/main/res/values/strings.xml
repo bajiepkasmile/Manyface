@@ -1,0 +1,67 @@
+<resources>
+
+    <string name="app_name">Manyface</string>
+
+    <!--Sign in-->
+    <string name="login">Login:</string>
+    <string name="password">Password:</string>
+    <string name="sign_in">Sign in</string>
+    <string name="forgot_password"><u>Forgot your password?</u></string>
+    <string name="it_happens">It happens</string>
+
+    <!--Sign up-->
+    <string name="password_confirmation">Password confirmation:</string>
+    <string name="sign_up">Sign up</string>
+
+    <!--Users-->
+    <string name="title.my_profiles">My profiles</string>
+    <string name="title.create_user">Creating new profile</string>
+    <string name="title.edit_user">Editing user</string>
+
+    <string name="sign_out">Sign out</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="deleting_confirmation">Are you sure you want to delete this profile?</string>
+    <string name="delete">Delete</string>
+    <string name="deleting">Deleting</string>
+    <string name="select_photo">Select photo</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="no_users">You don\'t have profiles.\nPress \"+\" to create new one.</string>
+
+    <!--Create user-->
+    <string name="cancel_creation.title">Cancel creation?</string>
+    <string name="cancel_creation.message">Profile will not be saved.</string>
+    <string name="saving">Saving</string>
+    <string name="username">Profile name</string>
+    <string name="description">Description</string>
+
+    <!--Edit user-->
+    <string name="cancel_editing.title">Cancel editing?</string>
+    <string name="cancel_editing.message">Changes will not be saved.</string>
+    <string name="saving_changes">Saving changes</string>
+
+    <!--Contacts-->
+    <string name="contacts_of">Contacts of %1$s</string>
+    <string name="no_contacts">You don\'t have any contacts.\nPress something to find new ones.</string>
+
+    <!--Chat-->
+    <string name="with">%1$s with %1$s</string>
+    <string name="your_message">Your message…</string>
+
+    <!--Errors-->
+    <string name="error.network_is_not_avaliable">Network is not available.</string>
+    <string name="error.connection_failed">Connection error. Check the network status.</string>
+    <string name="error.empty_field">Fill out all required fields.</string>
+    <string name="error.illegal_characters">Illegal characters.</string>
+    <string name="error.incorrect_password_confirmation">Incorrect password confirmation.</string>
+    <string name="error.account_already_exists">Account already exists.</string>
+    <string name="error.user_already_exists">Profile already exists.</string>
+    <string name="error.incorrect_login_and_password_combination">
+        Incorrect combination of login and password.</string>
+    <string name="error.too_many_users">You cannot create more than 3 profiles</string>
+    <string name="error.empty_username">Profile name must be filled out</string>
+
+</resources>

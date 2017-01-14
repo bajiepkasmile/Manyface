@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="logo_margin_bottom">20dp</dimen>
+    <dimen name="logo_size">72dp</dimen>
+    <dimen name="login_toolbar_height">160dp</dimen>
+
+    <dimen name="user_photo_size">64dp</dimen>
+    <dimen name="messages_count_size">28dp</dimen>
+
+</resources>

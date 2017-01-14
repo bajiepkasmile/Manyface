@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="photo_selections">
+        <item>@string/camera</item>
+        <item>@string/gallery</item>
+    </array>
+
+    <array name="user_actions">
+        <item>@string/edit</item>
+        <item>@string/delete</item>
+    </array>
+
+</resources>

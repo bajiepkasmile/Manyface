@@ -20,7 +20,7 @@ import com.nodomain.manyface.R;
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
 import com.nodomain.manyface.domain.Error;
 import com.nodomain.manyface.mvp.presenters.EditUserMvpPresenter;
-import com.nodomain.manyface.mvp.views.EditUserMvpView;
+import com.nodomain.manyface.mvp.views.EditProfileMvpView;
 import com.nodomain.manyface.ui.activities.MainActivity;
 import com.nodomain.manyface.utils.AppConstants;
 import com.squareup.picasso.Picasso;
@@ -29,15 +29,15 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class EditUserFragment extends BaseDialogFragment<EditUserMvpPresenter>
-        implements EditUserMvpView {
+public class EditProfileFragment extends BaseDialogFragment<EditUserMvpPresenter>
+        implements EditProfileMvpView {
 
     private static final int ITEM_CAMERA = 0;
     private static final int ITEM_GALLERY = 1;
     private static final String ARG_USER = "editable_user";
 
-    public static EditUserFragment newInstance(ProfileDto editableUser) {
-        EditUserFragment fragment = new EditUserFragment();
+    public static EditProfileFragment newInstance(ProfileDto editableUser) {
+        EditProfileFragment fragment = new EditProfileFragment();
 
         Bundle args = new Bundle();
         args.putParcelable(ARG_USER, editableUser);

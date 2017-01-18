@@ -24,7 +24,7 @@ import android.widget.Toast;
 import com.nodomain.manyface.R;
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
 import com.nodomain.manyface.domain.Error;
-import com.nodomain.manyface.mvp.presenters.UsersMvpPresenter;
+import com.nodomain.manyface.mvp.presenters.ProfilesMvpPresenter;
 import com.nodomain.manyface.mvp.views.ProfilesMvpView;
 import com.nodomain.manyface.navigation.UsersNavigator;
 import com.nodomain.manyface.ui.activities.MainActivity;
@@ -41,7 +41,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class ProfilesFragment extends BaseFragment<UsersMvpPresenter>
+public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
         implements ProfilesMvpView, OnItemClickListener, OnItemLongClickListener {
 
     private static final int DIALOG_ITEM_EDIT = 0;

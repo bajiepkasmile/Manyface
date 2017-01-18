@@ -8,8 +8,8 @@ import com.nodomain.manyface.di.scopes.PerActivity;
 import com.nodomain.manyface.ui.activities.MainActivity;
 import com.nodomain.manyface.ui.fragments.ChatFragment;
 import com.nodomain.manyface.ui.fragments.ContactsFragment;
-import com.nodomain.manyface.ui.fragments.CreateUserFragment;
-import com.nodomain.manyface.ui.fragments.EditUserFragment;
+import com.nodomain.manyface.ui.fragments.CreateProfileFragment;
+import com.nodomain.manyface.ui.fragments.EditProfileFragment;
 import com.nodomain.manyface.ui.fragments.ProfilesFragment;
 
 import dagger.Subcomponent;
@@ -29,9 +29,9 @@ public interface MainActivitySubComponent {
 
     void inject(ProfilesFragment fragment);
 
-    void inject(CreateUserFragment fragment);
+    void inject(CreateProfileFragment fragment);
 
-    void inject(EditUserFragment fragment);
+    void inject(EditProfileFragment fragment);
 
     void inject(ContactsFragment fragment);
 

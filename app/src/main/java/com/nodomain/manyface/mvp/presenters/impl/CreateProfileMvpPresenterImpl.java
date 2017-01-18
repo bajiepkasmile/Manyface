@@ -3,17 +3,16 @@ package com.nodomain.manyface.mvp.presenters.impl;
 
 import com.nodomain.manyface.domain.interactors.CreateProfileInteractor;
 import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor;
-import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor.*;
-import com.nodomain.manyface.mvp.presenters.CreateUserMvpPresenter;
-import com.nodomain.manyface.mvp.views.CreateUserMvpView;
+import com.nodomain.manyface.mvp.presenters.CreateProfileMvpPresenter;
+import com.nodomain.manyface.mvp.views.CreateProfileMvpView;
 
 import org.greenrobot.eventbus.Subscribe;
 
 import javax.inject.Inject;
 
 
-public class CreateUserMvpPresenterImpl extends BaseMvpPresenterImpl<CreateUserMvpView>
-        implements CreateUserMvpPresenter {
+public class CreateProfileMvpPresenterImpl extends BaseMvpPresenterImpl<CreateProfileMvpView>
+        implements CreateProfileMvpPresenter {
 
     private final CreateProfileInteractor createProfileInteractor;
     private final SetProfilePhotoInteractor setProfilePhotoInteractor;
@@ -21,8 +20,8 @@ public class CreateUserMvpPresenterImpl extends BaseMvpPresenterImpl<CreateUserM
     private String photoFilePath;
 
     @Inject
-    public CreateUserMvpPresenterImpl(CreateProfileInteractor createProfileInteractor,
-                                      SetProfilePhotoInteractor setProfilePhotoInteractor) {
+    public CreateProfileMvpPresenterImpl(CreateProfileInteractor createProfileInteractor,
+                                         SetProfilePhotoInteractor setProfilePhotoInteractor) {
         this.createProfileInteractor = createProfileInteractor;
         this.setProfilePhotoInteractor = setProfilePhotoInteractor;
     }

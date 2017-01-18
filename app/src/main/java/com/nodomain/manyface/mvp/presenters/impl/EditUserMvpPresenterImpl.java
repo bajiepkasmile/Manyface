@@ -4,16 +4,15 @@ package com.nodomain.manyface.mvp.presenters.impl;
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
 import com.nodomain.manyface.domain.interactors.EditProfileInteractor;
 import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor;
-import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor.*;
 import com.nodomain.manyface.mvp.presenters.EditUserMvpPresenter;
-import com.nodomain.manyface.mvp.views.EditUserMvpView;
+import com.nodomain.manyface.mvp.views.EditProfileMvpView;
 
 import org.greenrobot.eventbus.Subscribe;
 
 import javax.inject.Inject;
 
 
-public class EditUserMvpPresenterImpl extends BaseMvpPresenterImpl<EditUserMvpView> implements EditUserMvpPresenter {
+public class EditUserMvpPresenterImpl extends BaseMvpPresenterImpl<EditProfileMvpView> implements EditUserMvpPresenter {
 
     private final EditProfileInteractor editProfileInteractor;
     private final SetProfilePhotoInteractor setProfilePhotoInteractor;

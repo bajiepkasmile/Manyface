@@ -4,7 +4,7 @@ package com.nodomain.manyface.mvp.views;
 import com.nodomain.manyface.model.Profile;
 
 
-public interface EditUserMvpView extends MvpView {
+public interface EditProfileMvpView extends MvpView {
 
     void showEditableUser(Profile editableProfile);
 

@@ -13,27 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nodomain.manyface.R;
 import com.nodomain.manyface.domain.Error;
-import com.nodomain.manyface.mvp.presenters.CreateUserMvpPresenter;
-import com.nodomain.manyface.mvp.views.CreateUserMvpView;
+import com.nodomain.manyface.mvp.presenters.CreateProfileMvpPresenter;
+import com.nodomain.manyface.mvp.views.CreateProfileMvpView;
 import com.nodomain.manyface.ui.activities.MainActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class CreateUserFragment extends BaseDialogFragment<CreateUserMvpPresenter>
-        implements CreateUserMvpView {
+public class CreateProfileFragment extends BaseDialogFragment<CreateProfileMvpPresenter>
+        implements CreateProfileMvpView {
 
     private static final int ITEM_CAMERA = 0;
     private static final int ITEM_GALLERY = 1;
 
-    public static CreateUserFragment newInstance() {
-        return new CreateUserFragment();
+    public static CreateProfileFragment newInstance() {
+        return new CreateProfileFragment();
     }
 
     @BindView(R.id.iv_photo)

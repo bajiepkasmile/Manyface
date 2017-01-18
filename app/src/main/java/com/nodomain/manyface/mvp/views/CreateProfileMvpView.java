@@ -1,7 +1,7 @@
 package com.nodomain.manyface.mvp.views;
 
 
-public interface CreateUserMvpView extends MvpView {
+public interface CreateProfileMvpView extends MvpView {
 
     void showSaveProgress();
 

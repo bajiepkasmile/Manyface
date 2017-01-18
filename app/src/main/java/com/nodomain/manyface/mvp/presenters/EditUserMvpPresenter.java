@@ -1,15 +1,15 @@
 package com.nodomain.manyface.mvp.presenters;
 
 
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
-import com.nodomain.manyface.mvp.views.EditUserMvpView;
+import com.nodomain.manyface.model.Profile;
+import com.nodomain.manyface.mvp.views.EditProfileMvpView;
 
 
-public interface EditUserMvpPresenter extends MvpPresenter<EditUserMvpView> {
+public interface EditUserMvpPresenter extends MvpPresenter<EditProfileMvpView> {
 
-    void init(ProfileDto editableUser);
+    void init(Profile editableProfile);
 
-    void editUser(String newDescription, String newPhotoFilePath);
+    void editProfile(String newDescription, String newPictureFilePath);
 
     void navigateToBack();
 }

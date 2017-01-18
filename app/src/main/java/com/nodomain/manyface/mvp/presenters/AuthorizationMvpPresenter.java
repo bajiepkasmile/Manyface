@@ -6,5 +6,5 @@ import com.nodomain.manyface.mvp.views.AuthorizationMvpView;
 
 public interface AuthorizationMvpPresenter extends MvpPresenter<AuthorizationMvpView> {
 
-    void navigateToUsers();
+    void navigateToProfiles();
 }

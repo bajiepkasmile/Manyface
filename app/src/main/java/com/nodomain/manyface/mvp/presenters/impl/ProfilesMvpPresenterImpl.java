@@ -8,7 +8,7 @@ import com.nodomain.manyface.domain.interactors.GetProfilesInteractor;
 import com.nodomain.manyface.domain.interactors.SignOutInteractor;
 import com.nodomain.manyface.domain.interactors.SignOutInteractor.*;
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
-import com.nodomain.manyface.mvp.presenters.UsersMvpPresenter;
+import com.nodomain.manyface.mvp.presenters.ProfilesMvpPresenter;
 import com.nodomain.manyface.mvp.views.ProfilesMvpView;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -16,16 +16,16 @@ import org.greenrobot.eventbus.Subscribe;
 import javax.inject.Inject;
 
 
-public class UsersMvpPresenterImpl extends BaseMvpPresenterImpl<ProfilesMvpView> implements UsersMvpPresenter {
+public class ProfilesMvpPresenterImpl extends BaseMvpPresenterImpl<ProfilesMvpView> implements ProfilesMvpPresenter {
 
     private final GetProfilesInteractor getProfilesInteractor;
     private final DeleteProfileInteractor deleteProfileInteractor;
     private final SignOutInteractor signOutInteractor;
 
     @Inject
-    public UsersMvpPresenterImpl(GetProfilesInteractor getProfilesInteractor,
-                                 DeleteProfileInteractor deleteProfileInteractor,
-                                 SignOutInteractor signOutInteractor) {
+    public ProfilesMvpPresenterImpl(GetProfilesInteractor getProfilesInteractor,
+                                    DeleteProfileInteractor deleteProfileInteractor,
+                                    SignOutInteractor signOutInteractor) {
         this.getProfilesInteractor = getProfilesInteractor;
         this.deleteProfileInteractor = deleteProfileInteractor;
         this.signOutInteractor = signOutInteractor;

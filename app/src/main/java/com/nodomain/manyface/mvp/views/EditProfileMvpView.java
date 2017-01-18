@@ -6,7 +6,7 @@ import com.nodomain.manyface.model.Profile;
 
 public interface EditProfileMvpView extends MvpView {
 
-    void showEditableUser(Profile editableProfile);
+    void showEditableProfile(Profile editableProfile);
 
     void showSaveProgress();
 

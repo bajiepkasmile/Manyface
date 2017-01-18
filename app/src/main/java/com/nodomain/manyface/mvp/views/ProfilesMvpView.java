@@ -16,9 +16,9 @@ public interface ProfilesMvpView extends MvpView {
 
     void hideGetProfilesProgress();
 
-    void showDeleteUserProgress();
+    void showDeleteProfileProgress();
 
-    void hideDeleteUserProgress();
+    void hideDeleteProfileProgress();
 
     void showSignOutProgress();
 

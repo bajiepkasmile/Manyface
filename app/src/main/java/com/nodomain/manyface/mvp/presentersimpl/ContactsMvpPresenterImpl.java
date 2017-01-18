@@ -1,11 +1,11 @@
-package com.nodomain.manyface.mvp.presenters.impl;
+package com.nodomain.manyface.mvp.presentersimpl;
 
 
 import com.nodomain.manyface.domain.interactors.GetContactsInteractor;
 import com.nodomain.manyface.domain.interactors.GetContactsInteractor.*;
 import com.nodomain.manyface.domain.interactors.SearchInteractor;
 import com.nodomain.manyface.domain.interactors.SearchInteractor.*;
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
+import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.mvp.presenters.ContactsMvpPresenter;
 import com.nodomain.manyface.mvp.views.ContactsMvpView;
 
@@ -19,7 +19,7 @@ public class ContactsMvpPresenterImpl extends BaseMvpPresenterImpl<ContactsMvpVi
     private final GetContactsInteractor getContactsInteractor;
     private final SearchInteractor searchInteractor;
 
-    private ProfileDto currentUser;
+    private Profile currentProfile;
 
     @Inject
     public ContactsMvpPresenterImpl(GetContactsInteractor getContactsInteractor,
@@ -29,30 +29,30 @@ public class ContactsMvpPresenterImpl extends BaseMvpPresenterImpl<ContactsMvpVi
     }
 
     @Override
-    public void init(ProfileDto currentUser) {
-        this.currentUser = currentUser;
-        mvpView.showCurrentUser(currentUser);
+    public void init(Profile currentProfile) {
+        this.currentProfile = currentProfile;
+        mvpView.showCurrentProfile(currentProfile);
     }
 
     @Override
     public void getContacts() {
         mvpView.showGetContactsProgress();
-        getContactsInteractor.execute(currentUser.getId());
+        getContactsInteractor.execute(currentProfile);
     }
 
     @Override
-    public void searchForContacts(String contactUsername) {
+    public void searchForContacts(String contactName) {
         mvpView.showSearchProgress();
-        searchInteractor.execute(contactUsername);
+        searchInteractor.execute(contactName);
     }
 
     @Override
-    public void navigateToChat(ProfileDto contact) {
-        mvpView.showChatView(currentUser, contact);
+    public void navigateToChat(Profile contact) {
+        mvpView.showChatView(currentProfile, contact);
     }
 
     @Override
-    public void navigateToContactDetails(ProfileDto contact) {
+    public void navigateToContactDetails(Profile contact) {
         mvpView.showContactDetailsView(contact);
     }
 

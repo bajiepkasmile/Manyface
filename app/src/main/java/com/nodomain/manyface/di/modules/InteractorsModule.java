@@ -15,7 +15,7 @@ import com.nodomain.manyface.domain.interactors.GetDialogMessagesInteractor;
 import com.nodomain.manyface.domain.interactors.GetProfilesInteractor;
 import com.nodomain.manyface.domain.interactors.SearchInteractor;
 import com.nodomain.manyface.domain.interactors.SendMessageInteractor;
-import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor;
+import com.nodomain.manyface.domain.interactors.SetProfilePictureInteractor;
 import com.nodomain.manyface.domain.interactors.SignOutInteractor;
 import com.nodomain.manyface.domain.interactors.SignInInteractor;
 import com.nodomain.manyface.domain.interactors.SignUpInteractor;
@@ -89,10 +89,10 @@ public class InteractorsModule {
 
     @Singleton
     @Provides
-    SetProfilePhotoInteractor provideSetUserPhotoInteractor(Handler mainThreadHandler,
-                                                            ProfilesRepository profilesRepository,
-                                                            NetworkUtil networkUtil) {
-        return new SetProfilePhotoInteractor(mainThreadHandler, profilesRepository, networkUtil);
+    SetProfilePictureInteractor provideSetUserPhotoInteractor(Handler mainThreadHandler,
+                                                              ProfilesRepository profilesRepository,
+                                                              NetworkUtil networkUtil) {
+        return new SetProfilePictureInteractor(mainThreadHandler, profilesRepository, networkUtil);
     }
 
     @Singleton

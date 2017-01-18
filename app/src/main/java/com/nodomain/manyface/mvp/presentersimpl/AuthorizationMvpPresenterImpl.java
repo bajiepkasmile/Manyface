@@ -1,4 +1,4 @@
-package com.nodomain.manyface.mvp.presenters.impl;
+package com.nodomain.manyface.mvp.presentersimpl;
 
 
 import com.nodomain.manyface.data.datasources.remote.impl.AccountManager;
@@ -23,10 +23,9 @@ public class AuthorizationMvpPresenterImpl extends BaseMvpPresenterImpl<Authoriz
     }
 
     @Override
-    public void navigateToUsers() {
-        if (accountManager.hasAuthInfo()) {
-            mvpView.showUsersView();
-        }
+    public void navigateToProfiles() {
+        if (accountManager.hasAuthInfo())
+            mvpView.showProfilesView();
     }
 
     @Subscribe

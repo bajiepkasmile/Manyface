@@ -1,4 +1,4 @@
-package com.nodomain.manyface.mvp.presenters.impl;
+package com.nodomain.manyface.mvp.presentersimpl;
 
 
 import com.nodomain.manyface.domain.interactors.SignUpInteractor;
@@ -29,7 +29,7 @@ public class SignUpMvpPresenterImpl extends BaseMvpPresenterImpl<SignUpMvpView> 
     @Subscribe
     public void onSignUpSuccess(OnSignUpSuccessEvent event) {
         mvpView.hideSignUpProgress();
-        mvpView.showUsersView();
+        mvpView.showProfilesView();
     }
 
     @Subscribe

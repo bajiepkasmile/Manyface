@@ -1,13 +1,13 @@
-package com.nodomain.manyface.mvp.presenters.impl;
+package com.nodomain.manyface.mvp.presentersimpl;
 
 
-import com.nodomain.manyface.domain.interactors.CreateProfileInteractor.OnCreateUserSuccessEvent;
 import com.nodomain.manyface.domain.interactors.DeleteProfileInteractor;
-import com.nodomain.manyface.domain.interactors.EditProfileInteractor.OnEditUserSuccessEvent;
+import com.nodomain.manyface.domain.interactors.DeleteProfileInteractor.*;
 import com.nodomain.manyface.domain.interactors.GetProfilesInteractor;
+import com.nodomain.manyface.domain.interactors.GetProfilesInteractor.*;
 import com.nodomain.manyface.domain.interactors.SignOutInteractor;
 import com.nodomain.manyface.domain.interactors.SignOutInteractor.*;
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
+import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.mvp.presenters.ProfilesMvpPresenter;
 import com.nodomain.manyface.mvp.views.ProfilesMvpView;
 
@@ -32,15 +32,15 @@ public class ProfilesMvpPresenterImpl extends BaseMvpPresenterImpl<ProfilesMvpVi
     }
 
     @Override
-    public void getUsers() {
-        mvpView.showGetUsersProgress();
+    public void getProfiles() {
+        mvpView.showGetProfilesProgress();
         getProfilesInteractor.execute();
     }
 
     @Override
-    public void deleteUser(ProfileDto user) {
-        mvpView.showDeleteUserProgress();
-        deleteProfileInteractor.execute(user);
+    public void deleteProfile(Profile profile) {
+        mvpView.showDeleteProfileProgress();
+        deleteProfileInteractor.execute(profile);
     }
 
     @Override
@@ -50,47 +50,40 @@ public class ProfilesMvpPresenterImpl extends BaseMvpPresenterImpl<ProfilesMvpVi
     }
 
     @Override
-    public void navigateToEditUser(ProfileDto editableUser) {
-        mvpView.showEditUserView(editableUser);
+    public void navigateToEditProfile(Profile editableProfile) {
+        mvpView.showEditProfileView(editableProfile);
     }
 
     @Override
-    public void navigateToCreateUser() {
-        mvpView.showCreateUserView();
+    public void navigateToCreateProfile() {
+        mvpView.showCreateProfileView();
     }
 
     @Override
-    public void navigateToContacts(ProfileDto user) {
-        mvpView.showContactsView(user);
+    public void navigateToContacts(Profile profile) {
+        mvpView.showContactsView(profile);
     }
 
     @Subscribe
-    public void onGetUsersSuccess(OnGetUsersSuccessEvent event) {
-        mvpView.hideGetUsersProgress();
-        mvpView.showUsers(event.getUsers());
+    public void onGetProfilesSuccess(OnGetProfilesSuccessEvent event) {
+        mvpView.hideGetProfilesProgress();
+        mvpView.showProfiles(event.getProfiles());
     }
 
     @Subscribe
-    public void onGetUsersFailure(OnGetUsersFailureEvent event) {
+    public void onGetProfilesFailure(OnGetProfilesFailureEvent event) {
         mvpView.showError(event.getError());
     }
 
     @Subscribe
-    public void onEditUserSuccess(OnEditUserSuccessEvent event) {
-//        mvpView.updateUser(event.getEditedUSer());
-
-        //TODO: remove created and edited users from events
+    public void onDeleteProfileSuccess(OnDeleteProfileSuccessEvent event) {
+        mvpView.hideDeleteProfileProgress();
+        mvpView.hideProfile(event.getDeletedProfile());
     }
 
     @Subscribe
-    public void onDeleteUserSuccess(OnDeleteUserSuccessEvent event) {
-        mvpView.hideDeleteUserProgress();
-        mvpView.hideUser(event.getDeletedUser());
-    }
-
-    @Subscribe
-    public void onDeleteUserFailure(OnDeleteUserFailureEvent event) {
-        mvpView.hideDeleteUserProgress();
+    public void onDeleteUserFailure(OnDeleteProfileFailureEvent event) {
+        mvpView.hideDeleteProfileProgress();
         mvpView.showError(event.getError());
     }
 
@@ -98,10 +91,5 @@ public class ProfilesMvpPresenterImpl extends BaseMvpPresenterImpl<ProfilesMvpVi
     public void onLogoutFinished(OnSignOutFinishEvent event) {
         mvpView.hideSignOutProgress();
         mvpView.showAuthorizationView();
-    }
-
-    @Subscribe
-    public void onCreateUserSuccess(OnCreateUserSuccessEvent event) {
-//        mvpView.showUser(event.getUser());
     }
 }

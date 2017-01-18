@@ -1,10 +1,9 @@
-package com.nodomain.manyface.mvp.presenters.impl;
+package com.nodomain.manyface.mvp.presentersimpl;
 
 
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
-import com.nodomain.manyface.domain.CheckMessages;
 import com.nodomain.manyface.domain.interactors.GetDialogMessagesInteractor;
 import com.nodomain.manyface.domain.interactors.GetDialogMessagesInteractor.*;
+import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.mvp.presenters.ChatMvpPresenter;
 import com.nodomain.manyface.domain.interactors.SendMessageInteractor;
 import com.nodomain.manyface.domain.interactors.SendMessageInteractor.*;
@@ -20,8 +19,8 @@ public class ChatMvpPresenterImpl extends BaseMvpPresenterImpl<ChatMvpView> impl
     private final GetDialogMessagesInteractor getDialogMessagesInteractor;
     private final SendMessageInteractor sendMessageInteractor;
 
-    private ProfileDto currentUser;
-    private ProfileDto contact;
+    private Profile currentProfile;
+    private Profile contact;
 
     @Inject
     public ChatMvpPresenterImpl(GetDialogMessagesInteractor getDialogMessagesInteractor,
@@ -31,28 +30,26 @@ public class ChatMvpPresenterImpl extends BaseMvpPresenterImpl<ChatMvpView> impl
     }
 
     @Override
-    public void init(ProfileDto currentUser, ProfileDto contact) {
-        this.currentUser = currentUser;
+    public void init(Profile currentProfile, Profile contact) {
+        this.currentProfile = currentProfile;
         this.contact = contact;
-        mvpView.showChatMembers(currentUser, contact);
-        CheckMessages.getInstance().start();
+        mvpView.showChatMembers(currentProfile, contact);
     }
 
     @Override
     public void getMessages() {
         mvpView.showGetMessagesProgress();
-        getDialogMessagesInteractor.execute(currentUser.getId(), contact.getId());
+        getDialogMessagesInteractor.execute(currentProfile, contact);
     }
 
     @Override
     public void sendMessage(String text) {
-        sendMessageInteractor.execute(currentUser.getId(), contact.getId(), text);
+        sendMessageInteractor.execute(currentProfile, contact, text);
     }
 
     @Override
     public void navigateToBack() {
         mvpView.showPreviousView();
-        CheckMessages.getInstance().stop();
     }
 
     @Subscribe
@@ -68,17 +65,18 @@ public class ChatMvpPresenterImpl extends BaseMvpPresenterImpl<ChatMvpView> impl
     }
 
     @Subscribe
+    public void onSendMessageStart(OnSendMessageStartEvent event) {
+        mvpView.showSendingMessage(event.getSendingMessage());
+    }
+
+    @Subscribe
     public void onSendMessageSuccess(OnSendMessageSuccessEvent event) {
-        mvpView.showMessage(event.getMessage());
+        mvpView.showSendMessageSuccess(event.getMessage());
     }
 
     @Subscribe
     public void onSendMessageFailure(OnSendMessageFailureEvent event) {
+        mvpView.showSendMessageError(event.getUnsentMessage());
         mvpView.showError(event.getError());
-    }
-
-    @Subscribe
-    public void onTime(CheckMessages.OnTimerEvent event) {
-        getDialogMessagesInteractor.execute(currentUser.getId(), contact.getId());
     }
 }

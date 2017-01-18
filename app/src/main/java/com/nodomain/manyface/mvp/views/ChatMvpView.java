@@ -13,7 +13,7 @@ public interface ChatMvpView extends MvpView {
 
     void showMessages(List<Message> messages);
 
-    void showMessage(Message message);
+    void showSendingMessage(Message message);
 
     void showSendMessageSuccess(Message sentMessage);
 

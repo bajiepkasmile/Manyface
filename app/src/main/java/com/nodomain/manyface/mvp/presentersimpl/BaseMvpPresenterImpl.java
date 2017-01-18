@@ -1,4 +1,4 @@
-package com.nodomain.manyface.mvp.presenters.impl;
+package com.nodomain.manyface.mvp.presentersimpl;
 
 
 import com.nodomain.manyface.mvp.presenters.MvpPresenter;

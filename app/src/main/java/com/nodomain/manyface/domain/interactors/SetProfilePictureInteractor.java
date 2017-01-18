@@ -14,16 +14,16 @@ import com.nodomain.manyface.utils.FileReader;
 import com.nodomain.manyface.utils.NetworkUtil;
 
 
-public class SetProfilePhotoInteractor extends BaseSingleTaskInteractor {
+public class SetProfilePictureInteractor extends BaseSingleTaskInteractor {
 
     private final ProfilesRepository profilesRepository;
     private final NetworkUtil networkUtil;
     private final FileReader fileReader;
 
-    public SetProfilePhotoInteractor(Handler mainThreadHandler,
-                                     ProfilesRepository profilesRepository,
-                                     NetworkUtil networkUtil,
-                                     FileReader fileReader) {
+    public SetProfilePictureInteractor(Handler mainThreadHandler,
+                                       ProfilesRepository profilesRepository,
+                                       NetworkUtil networkUtil,
+                                       FileReader fileReader) {
         super(mainThreadHandler);
         this.profilesRepository = profilesRepository;
         this.networkUtil = networkUtil;

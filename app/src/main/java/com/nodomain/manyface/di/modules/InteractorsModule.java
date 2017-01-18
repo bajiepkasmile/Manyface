@@ -7,15 +7,15 @@ import com.nodomain.manyface.data.datasources.remote.impl.AccountManager;
 import com.nodomain.manyface.data.repositories.ContactsRepository;
 import com.nodomain.manyface.data.repositories.MessagesRepository;
 import com.nodomain.manyface.data.repositories.ProfilesRepository;
-import com.nodomain.manyface.domain.interactors.CreateUserInteractor;
-import com.nodomain.manyface.domain.interactors.DeleteUserInteractor;
-import com.nodomain.manyface.domain.interactors.EditUserInteractor;
+import com.nodomain.manyface.domain.interactors.CreateProfileInteractor;
+import com.nodomain.manyface.domain.interactors.DeleteProfileInteractor;
+import com.nodomain.manyface.domain.interactors.EditProfileInteractor;
 import com.nodomain.manyface.domain.interactors.GetContactsInteractor;
 import com.nodomain.manyface.domain.interactors.GetDialogMessagesInteractor;
-import com.nodomain.manyface.domain.interactors.GetUsersInteractor;
+import com.nodomain.manyface.domain.interactors.GetProfilesInteractor;
 import com.nodomain.manyface.domain.interactors.SearchInteractor;
 import com.nodomain.manyface.domain.interactors.SendMessageInteractor;
-import com.nodomain.manyface.domain.interactors.SetUserPhotoInteractor;
+import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor;
 import com.nodomain.manyface.domain.interactors.SignOutInteractor;
 import com.nodomain.manyface.domain.interactors.SignInInteractor;
 import com.nodomain.manyface.domain.interactors.SignUpInteractor;
@@ -53,27 +53,27 @@ public class InteractorsModule {
 
     @Singleton
     @Provides
-    CreateUserInteractor provideCreateUserInteractor(Handler mainThreadHandler,
-                                                     ProfilesRepository profilesRepository,
-                                                     NetworkUtil networkUtil,
-                                                     AuthInfoValidator authInfoValidator) {
-        return new CreateUserInteractor(mainThreadHandler, profilesRepository, networkUtil, authInfoValidator);
+    CreateProfileInteractor provideCreateUserInteractor(Handler mainThreadHandler,
+                                                        ProfilesRepository profilesRepository,
+                                                        NetworkUtil networkUtil,
+                                                        AuthInfoValidator authInfoValidator) {
+        return new CreateProfileInteractor(mainThreadHandler, profilesRepository, networkUtil, authInfoValidator);
     }
 
     @Singleton
     @Provides
-    EditUserInteractor provideEditUserInteractor(Handler mainThreadHandler,
-                                                 ProfilesRepository profilesRepository,
-                                                 NetworkUtil networkUtil) {
-        return new EditUserInteractor(mainThreadHandler, profilesRepository, networkUtil);
+    EditProfileInteractor provideEditUserInteractor(Handler mainThreadHandler,
+                                                    ProfilesRepository profilesRepository,
+                                                    NetworkUtil networkUtil) {
+        return new EditProfileInteractor(mainThreadHandler, profilesRepository, networkUtil);
     }
 
     @Singleton
     @Provides
-    GetUsersInteractor provideGetUsersInteractor(Handler mainThreadHandler,
-                                                 ProfilesRepository profilesRepository,
-                                                 NetworkUtil networkUtil) {
-        return new GetUsersInteractor(mainThreadHandler, profilesRepository, networkUtil);
+    GetProfilesInteractor provideGetUsersInteractor(Handler mainThreadHandler,
+                                                    ProfilesRepository profilesRepository,
+                                                    NetworkUtil networkUtil) {
+        return new GetProfilesInteractor(mainThreadHandler, profilesRepository, networkUtil);
     }
 
     @Singleton
@@ -89,18 +89,18 @@ public class InteractorsModule {
 
     @Singleton
     @Provides
-    SetUserPhotoInteractor provideSetUserPhotoInteractor(Handler mainThreadHandler,
-                                                         ProfilesRepository profilesRepository,
-                                                         NetworkUtil networkUtil) {
-        return new SetUserPhotoInteractor(mainThreadHandler, profilesRepository, networkUtil);
+    SetProfilePhotoInteractor provideSetUserPhotoInteractor(Handler mainThreadHandler,
+                                                            ProfilesRepository profilesRepository,
+                                                            NetworkUtil networkUtil) {
+        return new SetProfilePhotoInteractor(mainThreadHandler, profilesRepository, networkUtil);
     }
 
     @Singleton
     @Provides
-    DeleteUserInteractor provideDeleteUserInteractor(Handler mainThreadHandler,
-                                                     ProfilesRepository profilesRepository,
-                                                     NetworkUtil networkUtil) {
-        return new DeleteUserInteractor(mainThreadHandler, profilesRepository, networkUtil);
+    DeleteProfileInteractor provideDeleteUserInteractor(Handler mainThreadHandler,
+                                                        ProfilesRepository profilesRepository,
+                                                        NetworkUtil networkUtil) {
+        return new DeleteProfileInteractor(mainThreadHandler, profilesRepository, networkUtil);
     }
 
     @Singleton

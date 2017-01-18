@@ -22,7 +22,7 @@ public class MainActivityModule {
 
     @PerActivity
     @Provides
-    public AppCompatActivity provideAppCompatActivity() {
+    AppCompatActivity provideAppCompatActivity() {
         return mainActivity;
     }
 

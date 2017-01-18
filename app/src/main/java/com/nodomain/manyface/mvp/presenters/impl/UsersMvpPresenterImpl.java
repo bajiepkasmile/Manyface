@@ -1,12 +1,10 @@
 package com.nodomain.manyface.mvp.presenters.impl;
 
 
-import com.nodomain.manyface.domain.interactors.CreateUserInteractor.OnCreateUserSuccessEvent;
-import com.nodomain.manyface.domain.interactors.DeleteUserInteractor;
-import com.nodomain.manyface.domain.interactors.DeleteUserInteractor.*;
-import com.nodomain.manyface.domain.interactors.EditUserInteractor.OnEditUserSuccessEvent;
-import com.nodomain.manyface.domain.interactors.GetUsersInteractor;
-import com.nodomain.manyface.domain.interactors.GetUsersInteractor.*;
+import com.nodomain.manyface.domain.interactors.CreateProfileInteractor.OnCreateUserSuccessEvent;
+import com.nodomain.manyface.domain.interactors.DeleteProfileInteractor;
+import com.nodomain.manyface.domain.interactors.EditProfileInteractor.OnEditUserSuccessEvent;
+import com.nodomain.manyface.domain.interactors.GetProfilesInteractor;
 import com.nodomain.manyface.domain.interactors.SignOutInteractor;
 import com.nodomain.manyface.domain.interactors.SignOutInteractor.*;
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
@@ -20,29 +18,29 @@ import javax.inject.Inject;
 
 public class UsersMvpPresenterImpl extends BaseMvpPresenterImpl<UsersMvpView> implements UsersMvpPresenter {
 
-    private final GetUsersInteractor getUsersInteractor;
-    private final DeleteUserInteractor deleteUserInteractor;
+    private final GetProfilesInteractor getProfilesInteractor;
+    private final DeleteProfileInteractor deleteProfileInteractor;
     private final SignOutInteractor signOutInteractor;
 
     @Inject
-    public UsersMvpPresenterImpl(GetUsersInteractor getUsersInteractor,
-                                 DeleteUserInteractor deleteUserInteractor,
+    public UsersMvpPresenterImpl(GetProfilesInteractor getProfilesInteractor,
+                                 DeleteProfileInteractor deleteProfileInteractor,
                                  SignOutInteractor signOutInteractor) {
-        this.getUsersInteractor = getUsersInteractor;
-        this.deleteUserInteractor = deleteUserInteractor;
+        this.getProfilesInteractor = getProfilesInteractor;
+        this.deleteProfileInteractor = deleteProfileInteractor;
         this.signOutInteractor = signOutInteractor;
     }
 
     @Override
     public void getUsers() {
         mvpView.showGetUsersProgress();
-        getUsersInteractor.execute();
+        getProfilesInteractor.execute();
     }
 
     @Override
     public void deleteUser(ProfileDto user) {
         mvpView.showDeleteUserProgress();
-        deleteUserInteractor.execute(user);
+        deleteProfileInteractor.execute(user);
     }
 
     @Override

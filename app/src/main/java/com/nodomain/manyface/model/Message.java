@@ -52,6 +52,29 @@ public class Message {
                 message.status);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Message message = (Message) o;
+
+        if (firstAttemptTime != message.firstAttemptTime) return false;
+        if (senderId != message.senderId) return false;
+        if (receiverId != message.receiverId) return false;
+        return text != null ? text.equals(message.text) : message.text == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = text != null ? text.hashCode() : 0;
+        result = 31 * result + (int) (firstAttemptTime ^ (firstAttemptTime >>> 32));
+        result = 31 * result + (int) (senderId ^ (senderId >>> 32));
+        result = 31 * result + (int) (receiverId ^ (receiverId >>> 32));
+        return result;
+    }
+
     public String getText() {
         return text;
     }

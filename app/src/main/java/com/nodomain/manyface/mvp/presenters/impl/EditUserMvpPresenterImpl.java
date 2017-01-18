@@ -2,10 +2,9 @@ package com.nodomain.manyface.mvp.presenters.impl;
 
 
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
-import com.nodomain.manyface.domain.interactors.EditUserInteractor;
-import com.nodomain.manyface.domain.interactors.EditUserInteractor.*;
-import com.nodomain.manyface.domain.interactors.SetUserPhotoInteractor;
-import com.nodomain.manyface.domain.interactors.SetUserPhotoInteractor.*;
+import com.nodomain.manyface.domain.interactors.EditProfileInteractor;
+import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor;
+import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor.*;
 import com.nodomain.manyface.mvp.presenters.EditUserMvpPresenter;
 import com.nodomain.manyface.mvp.views.EditUserMvpView;
 
@@ -16,17 +15,17 @@ import javax.inject.Inject;
 
 public class EditUserMvpPresenterImpl extends BaseMvpPresenterImpl<EditUserMvpView> implements EditUserMvpPresenter {
 
-    private final EditUserInteractor editUserInteractor;
-    private final SetUserPhotoInteractor setUserPhotoInteractor;
+    private final EditProfileInteractor editProfileInteractor;
+    private final SetProfilePhotoInteractor setProfilePhotoInteractor;
 
     private ProfileDto editableUser;
     private String newDescription;
 
     @Inject
-    public EditUserMvpPresenterImpl(EditUserInteractor editUserInteractor,
-                                    SetUserPhotoInteractor setUserPhotoInteractor) {
-        this.editUserInteractor = editUserInteractor;
-        this.setUserPhotoInteractor = setUserPhotoInteractor;
+    public EditUserMvpPresenterImpl(EditProfileInteractor editProfileInteractor,
+                                    SetProfilePhotoInteractor setProfilePhotoInteractor) {
+        this.editProfileInteractor = editProfileInteractor;
+        this.setProfilePhotoInteractor = setProfilePhotoInteractor;
     }
 
     @Override
@@ -39,7 +38,7 @@ public class EditUserMvpPresenterImpl extends BaseMvpPresenterImpl<EditUserMvpVi
     public void editUser(String newDescription, String newPhotoFilePath) { //TODO: start both interactors together ?
         mvpView.showSaveProgress();
         this.newDescription = newDescription;
-        setUserPhotoInteractor.execute(editableUser, newPhotoFilePath);
+        setProfilePhotoInteractor.execute(editableUser, newPhotoFilePath);
     }
 
     @Override
@@ -49,7 +48,7 @@ public class EditUserMvpPresenterImpl extends BaseMvpPresenterImpl<EditUserMvpVi
 
     @Subscribe
     public void onSetUserPhotoSuccess(OnSetUserPhotoSuccessEvent event) {
-        editUserInteractor.execute(editableUser, newDescription);
+        editProfileInteractor.execute(editableUser, newDescription);
     }
 
     @Subscribe

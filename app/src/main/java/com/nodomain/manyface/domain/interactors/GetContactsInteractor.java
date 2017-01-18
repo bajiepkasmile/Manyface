@@ -3,11 +3,11 @@ package com.nodomain.manyface.domain.interactors;
 
 import android.os.Handler;
 
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
 import com.nodomain.manyface.domain.exeptions.ConnectionFailedException;
 import com.nodomain.manyface.data.repositories.ContactsRepository;
 import com.nodomain.manyface.domain.Error;
 import com.nodomain.manyface.domain.interactors.base.BaseSingleTaskInteractor;
+import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.utils.NetworkUtil;
 
 import java.util.List;
@@ -26,9 +26,9 @@ public class GetContactsInteractor extends BaseSingleTaskInteractor {
         this.networkUtil = networkUtil;
     }
 
-    public void execute(long userId) {
-        if (contactsRepository.hasCachedUserContacts(userId)) {
-            List<ProfileDto> contacts = contactsRepository.getCachedUserContactsCopy(userId);
+    public void execute(Profile profile) {
+        if (contactsRepository.hasCachedProfileContacts(profile)) {
+            List<Profile> contacts = contactsRepository.getCachedProfileContactsCopy(profile);
             postEvent(new OnGetContactsSuccessEvent(contacts));
             return;
         }
@@ -38,7 +38,7 @@ public class GetContactsInteractor extends BaseSingleTaskInteractor {
             postEvent(new OnGetContactsFailureEvent(Error.NETWORK_IS_NOT_AVAILABLE));
 
             runInBackground(() -> {
-                List<ProfileDto> contacts = contactsRepository.getUserContactsFromLocalStorage(userId);
+                List<Profile> contacts = contactsRepository.getProfileContactsFromLocalStorage(profile);
                 postOnMainThread(() -> postEvent(new OnGetContactsSuccessEvent(contacts)));
             });
 
@@ -47,12 +47,11 @@ public class GetContactsInteractor extends BaseSingleTaskInteractor {
 
         runInBackground(() -> {
             try {
-                List<ProfileDto> contacts = contactsRepository.getUserContactsFromRemoteStorage(userId);
+                List<Profile> contacts = contactsRepository.getProfileContactsFromRemoteStorage(profile);
                 postOnMainThread(() -> postEvent(new OnGetContactsSuccessEvent(contacts)));
             } catch (ConnectionFailedException e) {
-                postOnMainThread(() ->
-                        postEvent(new OnGetContactsFailureEvent(Error.CONNECTION_FAILED)));
-                List<ProfileDto> contacts = contactsRepository.getUserContactsFromLocalStorage(userId);
+                postOnMainThread(() -> postEvent(new OnGetContactsFailureEvent(Error.CONNECTION_FAILED)));
+                List<Profile> contacts = contactsRepository.getProfileContactsFromLocalStorage(profile);
                 postOnMainThread(() -> postEvent(new OnGetContactsSuccessEvent(contacts)));
             }
         });
@@ -60,13 +59,13 @@ public class GetContactsInteractor extends BaseSingleTaskInteractor {
 
     public static class OnGetContactsSuccessEvent {
 
-        private List<ProfileDto> contacts;
+        private List<Profile> contacts;
 
-        public OnGetContactsSuccessEvent(List<ProfileDto> contacts) {
+        public OnGetContactsSuccessEvent(List<Profile> contacts) {
             this.contacts = contacts;
         }
 
-        public List<ProfileDto> getContacts() {
+        public List<Profile> getContacts() {
             return contacts;
         }
     }

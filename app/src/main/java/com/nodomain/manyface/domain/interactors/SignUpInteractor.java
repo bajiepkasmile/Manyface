@@ -42,7 +42,7 @@ public class SignUpInteractor extends BaseSingleTaskInteractor {
         }
 
         Error passwordConfirmationCheckError =
-                authInfoValidator.checkPasswordConfirmation(password, passwordConfirmation);
+                authInfoValidator.checkPasswordConfirmation(passwordConfirmation);
         if (passwordConfirmationCheckError != null) {
             postEvent(new OnSignUpFailureEvent(passwordConfirmationCheckError));
         }
@@ -59,11 +59,12 @@ public class SignUpInteractor extends BaseSingleTaskInteractor {
         boolean networkIsNotAvailable = !networkUtil.isNetworkAvailable();
         if (networkIsNotAvailable) {
             postEvent(new OnSignUpFailureEvent(Error.NETWORK_IS_NOT_AVAILABLE));
+            return;
         }
 
         runInBackground(() -> {
             try {
-                accountManager.register(login, password);
+                accountManager.signUp(login, password);
                 postOnMainThread(() -> postEvent(new OnSignUpSuccessEvent()));
             } catch (AccountAlreadyExistsException e) {
                 postOnMainThread(() -> postEvent(new OnSignUpFailureEvent(Error.ACCOUNT_ALREADY_EXISTS)));

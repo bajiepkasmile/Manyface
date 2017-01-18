@@ -55,7 +55,7 @@ public class ContactsRepository {
         cache.clear();
     }
 
-    public List<Profile> searchForContacts(String contactUsername) throws ConnectionFailedException {
-        return remoteStorage.searchForContacts(contactUsername);
+    public List<Profile> searchForContacts(String contactName) throws ConnectionFailedException {
+        return remoteStorage.searchForContacts(contactName);
     }
 }

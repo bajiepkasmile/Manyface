@@ -50,12 +50,12 @@ public class AuthInfoValidator {
         return Error.NONE;
     }
 
-    public Error checkUsername(String username) {
-        if (username.length() == 0) {
+    public Error checkProfileName(String profileName) {
+        if (profileName.length() == 0) {
             return Error.EMPTY_USERNAME;
         }
 
-        if (stringContainsIllegalCharacters(username)) {
+        if (stringContainsIllegalCharacters(profileName)) {
             return Error.ILLEGAL_CHARACTERS_IN_USERNAME;
         }
 

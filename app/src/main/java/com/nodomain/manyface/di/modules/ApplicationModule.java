@@ -4,9 +4,6 @@ package com.nodomain.manyface.di.modules;
 import android.content.Context;
 import android.os.Handler;
 
-import com.nodomain.manyface.data.datasources.remote.impl.AccountManager;
-import com.nodomain.manyface.data.datasources.remote.impl.ManyfaceApi;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

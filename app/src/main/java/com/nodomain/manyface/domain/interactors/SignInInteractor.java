@@ -39,7 +39,7 @@ public class SignInInteractor extends BaseSingleTaskInteractor {
 
         runInBackground(() -> {
             try {
-                accountManager.login();
+                accountManager.signIn();
                 postOnMainThread(() -> postEvent(new OnSignInSuccessEvent()));
             } catch (IncorrectAuthorizationInfoException e) {
                 postOnMainThread(() ->
@@ -75,7 +75,7 @@ public class SignInInteractor extends BaseSingleTaskInteractor {
 
         runInBackground(() -> {
             try {
-                accountManager.login(login, password);
+                accountManager.signIn(login, password);
                 postOnMainThread(() -> postEvent(new OnSignInSuccessEvent()));
             } catch (IncorrectAuthorizationInfoException e) {
                 postOnMainThread(() ->
@@ -87,11 +87,9 @@ public class SignInInteractor extends BaseSingleTaskInteractor {
     }
 
     public static class OnSignInStartEvent {
-
     }
 
     public static class OnSignInSuccessEvent {
-
     }
 
     public static class OnSignInFailureEvent extends BaseFailureEvent {

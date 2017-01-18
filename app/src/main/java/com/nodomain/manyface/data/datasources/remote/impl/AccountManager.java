@@ -14,7 +14,7 @@ import java.io.IOException;
 import retrofit2.Response;
 
 
-public class AccountManager {   //TODO: move this class to another folder
+public class AccountManager {   //TODO: move this class to another folder?
 
     private static final String HEADER_ACCESS_TOKEN = "AccessToken";
     private static final String SH_PREF_NAME = "Manyface";
@@ -30,7 +30,7 @@ public class AccountManager {   //TODO: move this class to another folder
         this.api = api;
     }
 
-    public void register(String login, String password)
+    public void signUp(String login, String password)
             throws AccountAlreadyExistsException, ConnectionFailedException {
         try {
             Response<Void> response = api.signUp(login, password).execute();
@@ -47,7 +47,7 @@ public class AccountManager {   //TODO: move this class to another folder
         }
     }
 
-    public void login() throws IncorrectAuthorizationInfoException, ConnectionFailedException {
+    public void signIn() throws IncorrectAuthorizationInfoException, ConnectionFailedException {
         try {
             Response<Void> response = api.signIn(getLogin(), getPassword()).execute();
             if (response.code() == HttpCodes.NOT_ACCEPTABLE) {
@@ -61,7 +61,7 @@ public class AccountManager {   //TODO: move this class to another folder
         }
     }
 
-    public void login(String login, String password)
+    public void signIn(String login, String password)
             throws IncorrectAuthorizationInfoException, ConnectionFailedException{
         try {
             Response<Void> response = api.signIn(login, password).execute();
@@ -78,7 +78,7 @@ public class AccountManager {   //TODO: move this class to another folder
         }
     }
 
-    public void logout() {
+    public void signOut() {
         setAccessToken(null);
         setLogin(null);
         setPassword(null);

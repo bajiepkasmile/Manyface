@@ -1,10 +1,9 @@
 package com.nodomain.manyface.mvp.presenters.impl;
 
 
-import com.nodomain.manyface.domain.interactors.CreateUserInteractor;
-import com.nodomain.manyface.domain.interactors.CreateUserInteractor.*;
-import com.nodomain.manyface.domain.interactors.SetUserPhotoInteractor;
-import com.nodomain.manyface.domain.interactors.SetUserPhotoInteractor.*;
+import com.nodomain.manyface.domain.interactors.CreateProfileInteractor;
+import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor;
+import com.nodomain.manyface.domain.interactors.SetProfilePhotoInteractor.*;
 import com.nodomain.manyface.mvp.presenters.CreateUserMvpPresenter;
 import com.nodomain.manyface.mvp.views.CreateUserMvpView;
 
@@ -16,22 +15,22 @@ import javax.inject.Inject;
 public class CreateUserMvpPresenterImpl extends BaseMvpPresenterImpl<CreateUserMvpView>
         implements CreateUserMvpPresenter {
 
-    private final CreateUserInteractor createUserInteractor;
-    private final SetUserPhotoInteractor setUserPhotoInteractor;
+    private final CreateProfileInteractor createProfileInteractor;
+    private final SetProfilePhotoInteractor setProfilePhotoInteractor;
 
     private String photoFilePath;
 
     @Inject
-    public CreateUserMvpPresenterImpl(CreateUserInteractor createUserInteractor,
-                                      SetUserPhotoInteractor setUserPhotoInteractor) {
-        this.createUserInteractor = createUserInteractor;
-        this.setUserPhotoInteractor = setUserPhotoInteractor;
+    public CreateUserMvpPresenterImpl(CreateProfileInteractor createProfileInteractor,
+                                      SetProfilePhotoInteractor setProfilePhotoInteractor) {
+        this.createProfileInteractor = createProfileInteractor;
+        this.setProfilePhotoInteractor = setProfilePhotoInteractor;
     }
 
     @Override
     public void createUser(String username, String description, String photoFilePath) {
         mvpView.showSaveProgress();
-        createUserInteractor.execute(username, description);
+        createProfileInteractor.execute(username, description);
         this.photoFilePath = photoFilePath;
     }
 
@@ -44,7 +43,7 @@ public class CreateUserMvpPresenterImpl extends BaseMvpPresenterImpl<CreateUserM
     public void onCreateUserSuccess(OnCreateUserSuccessEvent event) {
 //        mvpView.hideSavingProgress();
 //        mvpView.navigateToBack();
-        setUserPhotoInteractor.execute(event.getUser(), photoFilePath);
+        setProfilePhotoInteractor.execute(event.getUser(), photoFilePath);
     }
 
     @Subscribe

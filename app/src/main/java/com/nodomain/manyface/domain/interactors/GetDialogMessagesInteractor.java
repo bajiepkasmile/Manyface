@@ -7,7 +7,8 @@ import com.nodomain.manyface.domain.exeptions.ConnectionFailedException;
 import com.nodomain.manyface.data.repositories.MessagesRepository;
 import com.nodomain.manyface.domain.Error;
 import com.nodomain.manyface.domain.interactors.base.BaseSingleTaskInteractor;
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.MessageDto;
+import com.nodomain.manyface.model.Message;
+import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.utils.NetworkUtil;
 
 import java.util.List;
@@ -26,9 +27,9 @@ public class GetDialogMessagesInteractor extends BaseSingleTaskInteractor {
         this.networkUtil = networkUtil;
     }
 
-    public void execute(long userId, long contactId) {
-        if (messagesRepository.hasCachedDialogMessages(userId, contactId)) {
-            List<MessageDto> dialogMessages = messagesRepository.getCachedDialogMessages(userId, contactId);
+    public void execute(Profile profile, Profile contact) {
+        if (messagesRepository.hasCachedDialogMessages(profile, contact)) {
+            List<Message> dialogMessages = messagesRepository.getCachedDialogMessages(profile, contact);
             postEvent(new OnGetDialogMessagesSuccessEvent(dialogMessages));
             return;
         }
@@ -41,7 +42,8 @@ public class GetDialogMessagesInteractor extends BaseSingleTaskInteractor {
 
         runInBackground(() -> {
             try {
-                List<MessageDto> dialogMessages = messagesRepository.getDialogMessages(userId, contactId);
+                List<Message> dialogMessages =
+                        messagesRepository.getDialogMessagesFromRemoteStorage(profile, contact);
                 postOnMainThread(() -> postEvent(new OnGetDialogMessagesSuccessEvent(dialogMessages)));
             } catch (ConnectionFailedException e) {
                 postOnMainThread(() -> postEvent(new OnGetDialogMessagesFailureEvent(Error.CONNECTION_FAILED)));
@@ -51,13 +53,13 @@ public class GetDialogMessagesInteractor extends BaseSingleTaskInteractor {
 
     public static class OnGetDialogMessagesSuccessEvent {
 
-        private List<MessageDto> dialogMessages;
+        private List<Message> dialogMessages;
 
-        public OnGetDialogMessagesSuccessEvent(List<MessageDto> dialogMessages) {
+        public OnGetDialogMessagesSuccessEvent(List<Message> dialogMessages) {
             this.dialogMessages = dialogMessages;
         }
 
-        public List<MessageDto> getDialogMessages() {
+        public List<Message> getDialogMessages() {
             return dialogMessages;
         }
     }

@@ -3,11 +3,11 @@ package com.nodomain.manyface.domain.interactors;
 
 import android.os.Handler;
 
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
 import com.nodomain.manyface.domain.exeptions.ConnectionFailedException;
 import com.nodomain.manyface.data.repositories.ContactsRepository;
 import com.nodomain.manyface.domain.Error;
 import com.nodomain.manyface.domain.interactors.base.BaseSingleTaskInteractor;
+import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.utils.NetworkUtil;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class SearchInteractor extends BaseSingleTaskInteractor {
         this.networkUtil = networkUtil;
     }
 
-    public void execute(String contactUsername) {
+    public void execute(String contactName) {
         boolean networkIsNotAvailable = !networkUtil.isNetworkAvailable();
         if (networkIsNotAvailable) {
             postEvent(new OnSearchFailureEvent(Error.NETWORK_IS_NOT_AVAILABLE));
@@ -35,7 +35,7 @@ public class SearchInteractor extends BaseSingleTaskInteractor {
 
         runInBackground(() -> {
             try {
-                List<ProfileDto> foundedContacts = contactsRepository.searchForContacts(contactUsername);
+                List<Profile> foundedContacts = contactsRepository.searchForContacts(contactName);
                 postOnMainThread(() -> postEvent(new OnSearchSuccessEvent(foundedContacts)));
             } catch (ConnectionFailedException e) {
                 postOnMainThread(() -> postEvent(new OnSearchFailureEvent(Error.CONNECTION_FAILED)));
@@ -45,13 +45,13 @@ public class SearchInteractor extends BaseSingleTaskInteractor {
 
     public static class OnSearchSuccessEvent {
 
-        private List<ProfileDto> foundedContacts;
+        private List<Profile> foundedContacts;
 
-        public OnSearchSuccessEvent(List<ProfileDto> foundedContacts) {
+        public OnSearchSuccessEvent(List<Profile> foundedContacts) {
             this.foundedContacts = foundedContacts;
         }
 
-        public List<ProfileDto> getFoundedContacts() {
+        public List<Profile> getFoundedContacts() {
             return foundedContacts;
         }
     }

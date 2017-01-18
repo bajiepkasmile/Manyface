@@ -31,10 +31,10 @@ public class SignOutInteractor extends BaseSingleTaskInteractor {
 
     public void execute() {
         runInBackground(() -> {
-            profilesRepository.clearUsers();
-            contactsRepository.clearContacts();
+            profilesRepository.clearProfiles();
+            contactsRepository.clearAllContacts();
             messagesRepository.clearMessages();
-            accountManager.logout();
+            accountManager.signOut();
 
             postOnMainThread(() -> postEvent(new OnSignOutFinishEvent()));
         });

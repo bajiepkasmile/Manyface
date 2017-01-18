@@ -35,10 +35,6 @@ public class BaseNavigator {
         dialogFragment.show(fragmentManager, null);
     }
 
-    protected void startActivity(Intent intent) {
-        activity.startActivity(intent);
-    }
-
     protected void startNewActivityAndFinishCurrent(Intent intent) {
         activity.startActivity(intent);
         activity.finish();

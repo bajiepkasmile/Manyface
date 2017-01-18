@@ -7,7 +7,7 @@ import com.nodomain.manyface.domain.exeptions.ConnectionFailedException;
 import com.nodomain.manyface.data.repositories.MessagesRepository;
 import com.nodomain.manyface.domain.Error;
 import com.nodomain.manyface.domain.interactors.base.BaseQueueTasksInteractor;
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.MessageDto;
+import com.nodomain.manyface.model.Message;
 import com.nodomain.manyface.utils.NetworkUtil;
 
 import java.util.concurrent.ExecutorService;
@@ -27,41 +27,46 @@ public class SendMessageInteractor extends BaseQueueTasksInteractor {
         this.networkUtil = networkUtil;
     }
 
-    public void execute(long userId, long contactId, String text) {
+    public void execute(Message message) {
         boolean networkIsNotAvailable = !networkUtil.isNetworkAvailable();
         if (networkIsNotAvailable) {
-            postEvent(new OnSendMessageFailureEvent(Error.NETWORK_IS_NOT_AVAILABLE));
+            postEvent(new OnSendMessageFailureEvent(message, Error.NETWORK_IS_NOT_AVAILABLE));
             return;
         }
 
         runInBackground(() -> {
             try {
-                MessageDto message = new MessageDto(text, "", userId); //TODO: get time ?
-                MessageDto sentMessage = messagesRepository.sendMessageToContact(message, contactId);
+                Message sentMessage = messagesRepository.sendMessage(message);
                 postOnMainThread(() -> postEvent(new OnSendMessageSuccessEvent(sentMessage)));
             } catch (ConnectionFailedException e) {
-                postOnMainThread(() -> postEvent(new OnSendMessageFailureEvent(Error.CONNECTION_FAILED)));
+                postOnMainThread(() -> postEvent(new OnSendMessageFailureEvent(message, Error.CONNECTION_FAILED)));
             }
         });
     }
 
     public static class OnSendMessageSuccessEvent {
 
-        private MessageDto message;
+        private Message message;
 
-        public OnSendMessageSuccessEvent(MessageDto message) {
+        public OnSendMessageSuccessEvent(Message message) {
             this.message = message;
         }
 
-        public MessageDto getMessage() {
+        public Message getMessage() {
             return message;
         }
     }
 
     public static class OnSendMessageFailureEvent extends BaseFailureEvent {
 
-        public OnSendMessageFailureEvent(Error error) {
+        private Message unsentMessage;
+
+        public OnSendMessageFailureEvent(Message message, Error error) {
             super(error);
+        }
+
+        public Message getUnsentMessage() {
+            return unsentMessage;
         }
     }
 }

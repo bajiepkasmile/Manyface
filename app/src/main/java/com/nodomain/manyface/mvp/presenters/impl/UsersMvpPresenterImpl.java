@@ -9,14 +9,14 @@ import com.nodomain.manyface.domain.interactors.SignOutInteractor;
 import com.nodomain.manyface.domain.interactors.SignOutInteractor.*;
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
 import com.nodomain.manyface.mvp.presenters.UsersMvpPresenter;
-import com.nodomain.manyface.mvp.views.UsersMvpView;
+import com.nodomain.manyface.mvp.views.ProfilesMvpView;
 
 import org.greenrobot.eventbus.Subscribe;
 
 import javax.inject.Inject;
 
 
-public class UsersMvpPresenterImpl extends BaseMvpPresenterImpl<UsersMvpView> implements UsersMvpPresenter {
+public class UsersMvpPresenterImpl extends BaseMvpPresenterImpl<ProfilesMvpView> implements UsersMvpPresenter {
 
     private final GetProfilesInteractor getProfilesInteractor;
     private final DeleteProfileInteractor deleteProfileInteractor;

@@ -9,7 +9,7 @@ import com.nodomain.manyface.ui.activities.AuthorizationActivity;
 import com.nodomain.manyface.ui.fragments.ChatFragment;
 import com.nodomain.manyface.ui.fragments.ContactDetailsFragment;
 import com.nodomain.manyface.ui.fragments.ContactsFragment;
-import com.nodomain.manyface.ui.fragments.UsersFragment;
+import com.nodomain.manyface.ui.fragments.ProfilesFragment;
 
 import javax.inject.Inject;
 
@@ -49,6 +49,6 @@ public class MainNavigator extends BaseNavigator implements UsersNavigator, Cont
     }
 
     public void navigateToUsersView() {
-        replaceFragment(UsersFragment.newInstance());
+        replaceFragment(ProfilesFragment.newInstance());
     }
 }

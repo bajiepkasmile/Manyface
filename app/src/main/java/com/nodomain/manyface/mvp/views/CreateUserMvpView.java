@@ -7,7 +7,5 @@ public interface CreateUserMvpView extends MvpView {
 
     void hideSaveProgress();
 
-    void showSaveSuccess();
-
     void showPreviousView();
 }

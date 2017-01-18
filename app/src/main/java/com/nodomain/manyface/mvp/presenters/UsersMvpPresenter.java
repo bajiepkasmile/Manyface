@@ -2,10 +2,10 @@ package com.nodomain.manyface.mvp.presenters;
 
 
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
-import com.nodomain.manyface.mvp.views.UsersMvpView;
+import com.nodomain.manyface.mvp.views.ProfilesMvpView;
 
 
-public interface UsersMvpPresenter extends MvpPresenter<UsersMvpView> {
+public interface UsersMvpPresenter extends MvpPresenter<ProfilesMvpView> {
 
     void getUsers();
 

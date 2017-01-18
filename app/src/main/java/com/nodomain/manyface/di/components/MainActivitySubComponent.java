@@ -10,7 +10,7 @@ import com.nodomain.manyface.ui.fragments.ChatFragment;
 import com.nodomain.manyface.ui.fragments.ContactsFragment;
 import com.nodomain.manyface.ui.fragments.CreateUserFragment;
 import com.nodomain.manyface.ui.fragments.EditUserFragment;
-import com.nodomain.manyface.ui.fragments.UsersFragment;
+import com.nodomain.manyface.ui.fragments.ProfilesFragment;
 
 import dagger.Subcomponent;
 
@@ -27,7 +27,7 @@ public interface MainActivitySubComponent {
 
     void inject(MainActivity activity);
 
-    void inject(UsersFragment fragment);
+    void inject(ProfilesFragment fragment);
 
     void inject(CreateUserFragment fragment);
 

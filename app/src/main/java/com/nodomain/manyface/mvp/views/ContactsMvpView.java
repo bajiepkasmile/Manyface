@@ -1,18 +1,18 @@
 package com.nodomain.manyface.mvp.views;
 
 
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
+import com.nodomain.manyface.model.Profile;
 
 import java.util.List;
 
 
 public interface ContactsMvpView extends MvpView {
 
-    void showCurrentUser(ProfileDto currentUser);
+    void showCurrentProfile(Profile currentProfile);
 
-    void showContacts(List<ProfileDto> contacts);
+    void showContacts(List<Profile> contacts);
 
-    void showFoundedContacts(List<ProfileDto> foundedContacts);
+    void showFoundedContacts(List<Profile> foundedContacts);
 
     void showGetContactsProgress();
 
@@ -22,9 +22,9 @@ public interface ContactsMvpView extends MvpView {
 
     void hideSearchProgress();
 
-    void showChatView(ProfileDto currentUser, ProfileDto contact);
+    void showChatView(Profile currentProfile, Profile contact);
 
-    void showContactDetailsView(ProfileDto contact);
+    void showContactDetailsView(Profile contact);
 
     void showPreviousView();
 }

@@ -7,5 +7,5 @@ public interface SignUpMvpView extends MvpView {
 
     void hideSignUpProgress();
 
-    void showUsersView();
+    void showProfilesView();
 }

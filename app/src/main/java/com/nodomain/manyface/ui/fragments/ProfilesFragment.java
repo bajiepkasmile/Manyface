@@ -25,7 +25,7 @@ import com.nodomain.manyface.R;
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
 import com.nodomain.manyface.domain.Error;
 import com.nodomain.manyface.mvp.presenters.UsersMvpPresenter;
-import com.nodomain.manyface.mvp.views.UsersMvpView;
+import com.nodomain.manyface.mvp.views.ProfilesMvpView;
 import com.nodomain.manyface.navigation.UsersNavigator;
 import com.nodomain.manyface.ui.activities.MainActivity;
 import com.nodomain.manyface.ui.animators.UsersAnimator;
@@ -41,8 +41,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class UsersFragment extends BaseFragment<UsersMvpPresenter>
-        implements UsersMvpView, OnItemClickListener, OnItemLongClickListener {
+public class ProfilesFragment extends BaseFragment<UsersMvpPresenter>
+        implements ProfilesMvpView, OnItemClickListener, OnItemLongClickListener {
 
     private static final int DIALOG_ITEM_EDIT = 0;
     private static final int DIALOG_ITEM_DELETE = 1;
@@ -67,8 +67,8 @@ public class UsersFragment extends BaseFragment<UsersMvpPresenter>
     private ProgressDialog pdDeletingProgress;
     private UsersAdapter usersAdapter;
 
-    public static UsersFragment newInstance() {
-        return new UsersFragment();
+    public static ProfilesFragment newInstance() {
+        return new ProfilesFragment();
     }
 
     @Nullable

@@ -1,12 +1,12 @@
 package com.nodomain.manyface.mvp.views;
 
 
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
+import com.nodomain.manyface.model.Profile;
 
 
 public interface EditUserMvpView extends MvpView {
 
-    void showEditableUser(ProfileDto editableUser);
+    void showEditableUser(Profile editableProfile);
 
     void showSaveProgress();
 

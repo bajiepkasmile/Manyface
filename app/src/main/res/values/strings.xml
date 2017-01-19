@@ -26,7 +26,7 @@
     <string name="take_picture">Select picture</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
-    <string name="no_profiles">You don't have profiles.\nTo create new one press:</string>
+    <string name="no_profiles">You don\'t have profiles.\nTo create new one press:</string>
 
     <!--Create profile-->
     <string name="title.create_profile">Creating new profile</string>
@@ -44,7 +44,7 @@
 
     <!--Contacts-->
     <string name="contacts_of">Contacts of %1$s</string>
-    <string name="no_contacts">You don't have any contacts.\nTo find new ones press:</string>
+    <string name="no_contacts">You don\'t have any contacts.\nTo find new ones press:</string>
     <string name="search">Search for contacts</string>
 
     <!--Chat-->

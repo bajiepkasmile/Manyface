@@ -1,33 +1,21 @@
 package com.nodomain.manyface.ui.fragments;
 
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.nodomain.manyface.R;
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
-import com.nodomain.manyface.domain.Error;
 import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.mvp.presenters.EditUserMvpPresenter;
 import com.nodomain.manyface.mvp.views.EditProfileMvpView;
 import com.nodomain.manyface.ui.activities.MainActivity;
-import com.nodomain.manyface.utils.AppConstants;
 import com.squareup.picasso.Picasso;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 

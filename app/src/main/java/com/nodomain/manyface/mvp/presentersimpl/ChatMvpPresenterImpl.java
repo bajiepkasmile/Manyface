@@ -3,6 +3,7 @@ package com.nodomain.manyface.mvp.presentersimpl;
 
 import com.nodomain.manyface.domain.interactors.GetDialogMessagesInteractor;
 import com.nodomain.manyface.domain.interactors.GetDialogMessagesInteractor.*;
+import com.nodomain.manyface.model.Message;
 import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.mvp.presenters.ChatMvpPresenter;
 import com.nodomain.manyface.domain.interactors.SendMessageInteractor;
@@ -45,6 +46,16 @@ public class ChatMvpPresenterImpl extends BaseMvpPresenterImpl<ChatMvpView> impl
     @Override
     public void sendMessage(String text) {
         sendMessageInteractor.execute(currentProfile, contact, text);
+    }
+
+    @Override
+    public void resendMessage(Message message) {
+
+    }
+
+    @Override
+    public void deleteMessage(Message message) {
+
     }
 
     @Override

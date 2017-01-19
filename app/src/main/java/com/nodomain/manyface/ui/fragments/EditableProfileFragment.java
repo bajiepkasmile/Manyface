@@ -117,8 +117,8 @@ public abstract class EditableProfileFragment<T extends MvpPresenter> extends Ba
     @OnClick(R.id.iv_picture)
     public void onPictureClick() {
         new AlertDialog.Builder(getContext())
-                .setTitle(R.string.select_photo)
-                .setItems(R.array.photo_selections, (dialogInterface, index) -> {
+                .setTitle(R.string.take_picture)
+                .setItems(R.array.picture_selections, (dialogInterface, index) -> {
                     switch (index) {
                         case DIALOG_ITEM_CAMERA: //TODO: to navigator
                             Intent takePhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);  //TODO: resolve activity

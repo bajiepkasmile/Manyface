@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nodomain.manyface.R;
@@ -68,7 +70,13 @@ public abstract class BaseFragment<P extends MvpPresenter> extends Fragment impl
 
     protected Toast createToast(String errorMessage) {
         Toast toast = Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+        LinearLayout layout = (LinearLayout) toast.getView();
+        if (layout.getChildCount() > 0) {
+            TextView tv = (TextView) layout.getChildAt(0);
+            tv.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        }
+        toast.show();
+
         return toast;
     }
 

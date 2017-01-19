@@ -82,7 +82,6 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
 //        if (savedInstanceState == null) {
 //            animator.animateLogoFadeOut();
 //        }
-
         mvpPresenter.getProfiles();
     }
 
@@ -206,7 +205,7 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
     private AlertDialog createProfileActionsAlertDialog(Profile profile) {
         return new AlertDialog.Builder(getContext())
                 .setTitle(profile.getName())
-                .setItems(R.array.user_actions, (dialogInterface, index) -> {
+                .setItems(R.array.profile_actions, (dialogInterface, index) -> {
                     switch (index) {
                         case DIALOG_ITEM_EDIT:
                             onProfileItemEdit(profile);

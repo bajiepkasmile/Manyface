@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -80,6 +81,15 @@ public class ChatFragment extends BaseFragment<ChatMvpPresenter> implements Chat
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            mvpPresenter.navigateToBack();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void showChatMembers(Profile currentProfile, Profile contact) {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(contact.getName());
     }
@@ -138,11 +148,6 @@ public class ChatFragment extends BaseFragment<ChatMvpPresenter> implements Chat
         Message message = messagesAdapter.getItem(position);
         if (message.getStatus() == Message.Status.UNSENT)
             createUnsentMessageActionsAlertDialog(message).show();
-    }
-
-    @OnClick(R.id.iv_home)
-    public void onHomeClick() {
-        mvpPresenter.navigateToBack();
     }
 
     @OnClick(R.id.iv_send)

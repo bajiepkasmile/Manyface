@@ -14,6 +14,7 @@ import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 @Module
@@ -24,6 +25,9 @@ public class DataSourcesModule {
     ManyfaceApi provideManyfaceApi() {
         return new Retrofit.Builder()
                 .baseUrl(ApiConstants.BASE_URL)
+                //order of factories is important
+                //if GCF will be first, it will add quotes to message text
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ManyfaceApi.class);

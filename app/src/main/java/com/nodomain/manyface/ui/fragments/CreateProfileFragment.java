@@ -37,7 +37,7 @@ public class CreateProfileFragment extends EditableProfileFragment<CreateProfile
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_edit_profile);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_create_profile);
     }
 
     @OnClick(R.id.btn_save)

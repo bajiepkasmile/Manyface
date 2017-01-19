@@ -104,13 +104,14 @@ public class MessagesRemoteStorage {
 
     private Response<String> submitSendMessageRequest(Message message) throws IOException {
         String accessToken = accountManager.getAccessToken();
+        String messageEncoded = message.getText();
         return api
-                .sendMessage(accessToken, message.getSenderId(), message.getReceiverId(), message.getText())
+                .sendMessage(accessToken, message.getSenderId(), message.getReceiverId(), messageEncoded)
                 .execute();
     }
 
     private long getMessageSentTimeFromResponse(Response<String> response) {
         String timeStr = response.body();
-        return TimeConverter.stringToTime(timeStr);
+        return TimeConverter.fullDateStringToTime(timeStr);
     }
 }

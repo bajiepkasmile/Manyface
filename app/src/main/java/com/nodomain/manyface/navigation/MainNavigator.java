@@ -16,7 +16,8 @@ import com.nodomain.manyface.ui.fragments.ProfilesFragment;
 import javax.inject.Inject;
 
 
-public class MainNavigator extends BaseNavigator implements ProfilesNavigator, ContactsNavigator, ChatNavigator {
+public class MainNavigator extends BaseNavigator
+        implements ProfilesNavigator, ContactsNavigator, ChatNavigator, EditableProfileNavigator {
 
 
     @Inject

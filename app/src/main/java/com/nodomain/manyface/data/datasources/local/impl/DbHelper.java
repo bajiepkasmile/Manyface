@@ -46,7 +46,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 + TableUnsentMessages.TEXT + TYPE_TEXT + COMMA_SEP
                 + TableUnsentMessages.FIRST_ATTEMPT_TIME + TYPE_INT + COMMA_SEP
                 + TableUnsentMessages.SENDER_ID + TYPE_INT + COMMA_SEP
-                + TableUnsentMessages.RECEIVER_ID + TYPE_INT + COMMA_SEP
+                + TableUnsentMessages.RECEIVER_ID + TYPE_INT
                 + ");"
         );
     }

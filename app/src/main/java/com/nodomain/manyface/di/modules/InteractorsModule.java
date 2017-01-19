@@ -20,6 +20,7 @@ import com.nodomain.manyface.domain.interactors.SignOutInteractor;
 import com.nodomain.manyface.domain.interactors.SignInInteractor;
 import com.nodomain.manyface.domain.interactors.SignUpInteractor;
 import com.nodomain.manyface.utils.AuthInfoValidator;
+import com.nodomain.manyface.utils.FileReader;
 import com.nodomain.manyface.utils.NetworkUtil;
 
 import java.util.concurrent.ExecutorService;
@@ -53,7 +54,7 @@ public class InteractorsModule {
 
     @Singleton
     @Provides
-    CreateProfileInteractor provideCreateUserInteractor(Handler mainThreadHandler,
+    CreateProfileInteractor provideCreateProfileInteractor(Handler mainThreadHandler,
                                                         ProfilesRepository profilesRepository,
                                                         NetworkUtil networkUtil,
                                                         AuthInfoValidator authInfoValidator) {
@@ -62,7 +63,7 @@ public class InteractorsModule {
 
     @Singleton
     @Provides
-    EditProfileInteractor provideEditUserInteractor(Handler mainThreadHandler,
+    EditProfileInteractor provideEditProfileInteractor(Handler mainThreadHandler,
                                                     ProfilesRepository profilesRepository,
                                                     NetworkUtil networkUtil) {
         return new EditProfileInteractor(mainThreadHandler, profilesRepository, networkUtil);
@@ -70,7 +71,7 @@ public class InteractorsModule {
 
     @Singleton
     @Provides
-    GetProfilesInteractor provideGetUsersInteractor(Handler mainThreadHandler,
+    GetProfilesInteractor provideGetProfilesInteractor(Handler mainThreadHandler,
                                                     ProfilesRepository profilesRepository,
                                                     NetworkUtil networkUtil) {
         return new GetProfilesInteractor(mainThreadHandler, profilesRepository, networkUtil);
@@ -89,15 +90,16 @@ public class InteractorsModule {
 
     @Singleton
     @Provides
-    SetProfilePictureInteractor provideSetUserPhotoInteractor(Handler mainThreadHandler,
-                                                              ProfilesRepository profilesRepository,
-                                                              NetworkUtil networkUtil) {
-        return new SetProfilePictureInteractor(mainThreadHandler, profilesRepository, networkUtil);
+    SetProfilePictureInteractor provideSetProfilePhotoInteractor(Handler mainThreadHandler,
+                                                                 ProfilesRepository profilesRepository,
+                                                                 NetworkUtil networkUtil,
+                                                                 FileReader fileReader) {
+        return new SetProfilePictureInteractor(mainThreadHandler, profilesRepository, networkUtil, fileReader);
     }
 
     @Singleton
     @Provides
-    DeleteProfileInteractor provideDeleteUserInteractor(Handler mainThreadHandler,
+    DeleteProfileInteractor provideDeleteProfileInteractor(Handler mainThreadHandler,
                                                         ProfilesRepository profilesRepository,
                                                         NetworkUtil networkUtil) {
         return new DeleteProfileInteractor(mainThreadHandler, profilesRepository, networkUtil);

@@ -9,7 +9,7 @@
     >
 
     <ImageView
-        android:id="@id/iv_contact_picture"
+        android:id="@+id/iv_contact_picture"
         android:layout_width="104dp"
         android:layout_height="104dp"
         android:layout_marginBottom="20dp"

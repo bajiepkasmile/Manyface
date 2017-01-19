@@ -52,11 +52,11 @@ public class AuthInfoValidator {
 
     public Error checkProfileName(String profileName) {
         if (profileName.length() == 0) {
-            return Error.EMPTY_USERNAME;
+            return Error.EMPTY_PROFILE_NAME;
         }
 
         if (stringContainsIllegalCharacters(profileName)) {
-            return Error.ILLEGAL_CHARACTERS_IN_USERNAME;
+            return Error.ILLEGAL_CHARACTERS_IN_PROFILE_NAME;
         }
 
         return Error.NONE;

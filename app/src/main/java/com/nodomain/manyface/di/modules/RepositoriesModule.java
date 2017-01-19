@@ -25,7 +25,7 @@ public class RepositoriesModule {
 
     @Singleton
     @Provides
-    ProfilesRepository providesUsersRepository(ProfilesRemoteStorage remoteStorage,
+    ProfilesRepository providesProfilesRepository(ProfilesRemoteStorage remoteStorage,
                                                ProfilesLocalStorage localStorage,
                                                ProfilesCache cache) {
         return new ProfilesRepository(remoteStorage, localStorage, cache);

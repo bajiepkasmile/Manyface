@@ -4,6 +4,7 @@ package com.nodomain.manyface.di.modules;
 import com.nodomain.manyface.navigation.AuthorizationNavigator;
 import com.nodomain.manyface.navigation.ChatNavigator;
 import com.nodomain.manyface.navigation.ContactsNavigator;
+import com.nodomain.manyface.navigation.EditableProfileNavigator;
 import com.nodomain.manyface.navigation.MainNavigator;
 import com.nodomain.manyface.navigation.ProfilesNavigator;
 import com.nodomain.manyface.navigation.SignInNavigator;
@@ -27,7 +28,7 @@ public class NavigationModule {
     }
 
     @Provides
-    ProfilesNavigator provideUsersNavigator(MainNavigator mainNavigator) {
+    ProfilesNavigator provideProfilesNavigator(MainNavigator mainNavigator) {
         return mainNavigator;
     }
 
@@ -38,6 +39,11 @@ public class NavigationModule {
 
     @Provides
     ChatNavigator provideChatNavigator(MainNavigator mainNavigator) {
+        return mainNavigator;
+    }
+
+    @Provides
+    EditableProfileNavigator provideEditableProfileNavigator(MainNavigator mainNavigator) {
         return mainNavigator;
     }
 }

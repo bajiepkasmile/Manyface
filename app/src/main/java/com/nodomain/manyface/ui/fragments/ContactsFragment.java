@@ -13,8 +13,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.nodomain.manyface.R;
 import com.nodomain.manyface.domain.Error;
@@ -54,8 +54,8 @@ public class ContactsFragment extends BaseFragment<ContactsMvpPresenter>
 
     @BindView(R.id.pb_getting_contacts)
     ProgressBar pbGettingContacts;
-    @BindView(R.id.tv_no_contacts)
-    TextView tvNoContacts;
+    @BindView(R.id.ll_no_contacts)
+    LinearLayout llNoContacts;
     @BindView(R.id.rv_contacts)
     RecyclerView rvContacts;
 
@@ -91,6 +91,15 @@ public class ContactsFragment extends BaseFragment<ContactsMvpPresenter>
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            mvpPresenter.navigateToBack();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void showCurrentProfile(Profile currentProfile) {
         String title = String.format(getString(R.string.contacts_of), currentProfile.getName());
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(title);
@@ -99,9 +108,9 @@ public class ContactsFragment extends BaseFragment<ContactsMvpPresenter>
     @Override
     public void showContacts(List<Profile> contacts) {
         if (contacts.size() == 0)
-            tvNoContacts.setVisibility(View.VISIBLE);
+            llNoContacts.setVisibility(View.VISIBLE);
         else
-            tvNoContacts.setVisibility(View.GONE);
+            llNoContacts.setVisibility(View.GONE);
 
         if (!isSearchingForContacts)
             setContacts(contacts);
@@ -174,14 +183,9 @@ public class ContactsFragment extends BaseFragment<ContactsMvpPresenter>
         mvpPresenter.navigateToContactDetails(contact);
     }
 
-    @OnClick(R.id.iv_home)
-    public void onHomeClick() {
-        mvpPresenter.navigateToBack();
-    }
-
     private void setSearchViewListeners(SearchView searchView) {
         searchView.setOnSearchClickListener((v) -> {
-            tvNoContacts.setVisibility(View.GONE);
+            llNoContacts.setVisibility(View.GONE);
             isSearchingForContacts = true;
         });
 

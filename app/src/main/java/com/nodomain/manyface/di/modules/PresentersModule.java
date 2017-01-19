@@ -3,6 +3,7 @@ package com.nodomain.manyface.di.modules;
 
 import com.nodomain.manyface.mvp.presenters.AuthorizationMvpPresenter;
 import com.nodomain.manyface.mvp.presenters.ChatMvpPresenter;
+import com.nodomain.manyface.mvp.presenters.ContactDetailsMvpPresenter;
 import com.nodomain.manyface.mvp.presenters.ContactsMvpPresenter;
 import com.nodomain.manyface.mvp.presenters.CreateProfileMvpPresenter;
 import com.nodomain.manyface.mvp.presenters.EditUserMvpPresenter;
@@ -11,6 +12,7 @@ import com.nodomain.manyface.mvp.presenters.SignUpMvpPresenter;
 import com.nodomain.manyface.mvp.presenters.ProfilesMvpPresenter;
 import com.nodomain.manyface.mvp.presentersimpl.AuthorizationMvpPresenterImpl;
 import com.nodomain.manyface.mvp.presentersimpl.ChatMvpPresenterImpl;
+import com.nodomain.manyface.mvp.presentersimpl.ContactDetailsMvpPresenterImpl;
 import com.nodomain.manyface.mvp.presentersimpl.ContactsMvpPresenterImpl;
 import com.nodomain.manyface.mvp.presentersimpl.CreateProfileMvpPresenterImpl;
 import com.nodomain.manyface.mvp.presentersimpl.EditUserMvpPresenterImpl;
@@ -41,17 +43,17 @@ public class PresentersModule {
     }
 
     @Provides
-    ProfilesMvpPresenter provideUsersMvpPresenter(ProfilesMvpPresenterImpl presenterImpl) {
+    ProfilesMvpPresenter provideProfilesMvpPresenter(ProfilesMvpPresenterImpl presenterImpl) {
         return presenterImpl;
     }
 
     @Provides
-    CreateProfileMvpPresenter provideCreateUserMvpPresenter(CreateProfileMvpPresenterImpl presenterImpl) {
+    CreateProfileMvpPresenter provideCreateProfileMvpPresenter(CreateProfileMvpPresenterImpl presenterImpl) {
         return presenterImpl;
     }
 
     @Provides
-    EditUserMvpPresenter provideEditUserMvpPresenter(EditUserMvpPresenterImpl presenterImpl) {
+    EditUserMvpPresenter provideEditProfileMvpPresenter(EditUserMvpPresenterImpl presenterImpl) {
         return presenterImpl;
     }
 
@@ -62,6 +64,11 @@ public class PresentersModule {
 
     @Provides
     ChatMvpPresenter provideChatMvpPresenter(ChatMvpPresenterImpl presenterImpl) {
+        return presenterImpl;
+    }
+
+    @Provides
+    ContactDetailsMvpPresenter provideContactDetailsMvpPresenter(ContactDetailsMvpPresenterImpl presenterImpl) {
         return presenterImpl;
     }
 }

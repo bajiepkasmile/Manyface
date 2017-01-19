@@ -5,9 +5,9 @@ import com.nodomain.manyface.navigation.AuthorizationNavigator;
 import com.nodomain.manyface.navigation.ChatNavigator;
 import com.nodomain.manyface.navigation.ContactsNavigator;
 import com.nodomain.manyface.navigation.MainNavigator;
+import com.nodomain.manyface.navigation.ProfilesNavigator;
 import com.nodomain.manyface.navigation.SignInNavigator;
 import com.nodomain.manyface.navigation.SignUpNavigator;
-import com.nodomain.manyface.navigation.UsersNavigator;
 
 import dagger.Module;
 import dagger.Provides;
@@ -27,7 +27,7 @@ public class NavigationModule {
     }
 
     @Provides
-    UsersNavigator provideUsersNavigator(MainNavigator mainNavigator) {
+    ProfilesNavigator provideUsersNavigator(MainNavigator mainNavigator) {
         return mainNavigator;
     }
 

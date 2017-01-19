@@ -1,10 +1,9 @@
 package com.nodomain.manyface.data.datasources.remote;
 
 
-import com.nodomain.manyface.data.datasources.remote.impl.AccountManager;
 import com.nodomain.manyface.data.datasources.remote.impl.DtoMapper;
 import com.nodomain.manyface.data.datasources.remote.impl.ManyfaceApi;
-import com.nodomain.manyface.data.datasources.remote.impl.TimeConverter;
+import com.nodomain.manyface.utils.TimeConverter;
 import com.nodomain.manyface.data.datasources.remote.impl.dtos.MessageDto;
 import com.nodomain.manyface.domain.exeptions.ConnectionFailedException;
 import com.nodomain.manyface.model.Message;

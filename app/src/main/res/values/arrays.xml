@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <array name="photo_selections">
+    <array name="picture_selections">
         <item>@string/camera</item>
         <item>@string/gallery</item>
     </array>
 
-    <array name="user_actions">
+    <array name="profile_actions">
         <item>@string/edit</item>
+        <item>@string/delete</item>
+    </array>
+
+    <array name="unsent_message_actions">
+        <item>@string/retry</item>
         <item>@string/delete</item>
     </array>
 

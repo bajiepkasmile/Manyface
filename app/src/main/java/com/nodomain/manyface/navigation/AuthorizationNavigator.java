@@ -21,7 +21,7 @@ public class AuthorizationNavigator extends BaseNavigator implements SignInNavig
     }
 
     @Override
-    public void navigateToUsersView() {
+    public void navigateToProfilesView() {
         Intent intent = createIntent(MainActivity.class);
         startNewActivityAndFinishCurrent(intent);
     }

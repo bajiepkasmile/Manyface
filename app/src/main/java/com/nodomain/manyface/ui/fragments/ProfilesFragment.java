@@ -4,13 +4,10 @@ package com.nodomain.manyface.ui.fragments;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,19 +16,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nodomain.manyface.R;
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
 import com.nodomain.manyface.domain.Error;
+import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.mvp.presenters.ProfilesMvpPresenter;
 import com.nodomain.manyface.mvp.views.ProfilesMvpView;
-import com.nodomain.manyface.navigation.UsersNavigator;
+import com.nodomain.manyface.navigation.ProfilesNavigator;
 import com.nodomain.manyface.ui.activities.MainActivity;
-import com.nodomain.manyface.ui.animators.UsersAnimator;
+import com.nodomain.manyface.ui.animators.ProfilesAnimator;
 import com.nodomain.manyface.ui.listeners.OnItemClickListener;
 import com.nodomain.manyface.ui.listeners.OnItemLongClickListener;
-import com.nodomain.manyface.ui.recyclerviews.adapters.UsersAdapter;
+import com.nodomain.manyface.ui.recyclerviews.adapters.ProfilesAdapter;
 
 import java.util.List;
 
@@ -49,23 +45,23 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.rv_users)
-    RecyclerView rvUsers;
-    @BindView(R.id.tv_no_users)
-    TextView tvNoUsers;
-    @BindView(R.id.pb_getting_users)
-    ProgressBar pbGettingUsers;
+    @BindView(R.id.rv_profiles)
+    RecyclerView rvProfiles;
+    @BindView(R.id.tv_no_profiles)
+    TextView tvNoProfiles;
+    @BindView(R.id.pb_getting_profiles)
+    ProgressBar pbGettingProfiles;
     @BindView(R.id.fab)
     FloatingActionButton fab;
 
     @Inject
-    UsersNavigator navigator;
+    ProfilesNavigator navigator;
     @Inject
-    UsersAnimator animator;
+    ProfilesAnimator animator;
 
     private ProgressDialog pdSignOut;
     private ProgressDialog pdDeletingProgress;
-    private UsersAdapter usersAdapter;
+    private ProfilesAdapter profilesAdapter;
 
     public static ProfilesFragment newInstance() {
         return new ProfilesFragment();
@@ -75,22 +71,19 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         MainActivity.getActivitySubComponent(getActivity()).inject(this);
-        return inflater.inflate(R.layout.fragment_users, container, false);
+        return inflater.inflate(R.layout.fragment_profiles, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setupActionBar();
-        setHasOptionsMenu(true);
-
 //        animator.bind(view);
 //        if (savedInstanceState == null) {
 //            animator.animateLogoFadeOut();
 //        }
 
-        mvpPresenter.getUsers();
+        mvpPresenter.getProfiles();
     }
 
     @Override
@@ -101,7 +94,7 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.users, menu);
+        inflater.inflate(R.menu.profiles, menu);
     }
 
     @Override
@@ -115,47 +108,44 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
     }
 
     @Override
-    public void showUsers(List<ProfileDto> users) {
-        if (users.size() == 0) {
-            tvNoUsers.setVisibility(View.VISIBLE);
+    public void showProfiles(List<Profile> profiles) {
+        if (profiles.size() == 0) {
+            tvNoProfiles.setVisibility(View.VISIBLE);
             return;
         }
 
-        tvNoUsers.setVisibility(View.GONE);
+        tvNoProfiles.setVisibility(View.GONE);
 
-        usersAdapter = new UsersAdapter(users);
-        usersAdapter.setOnItemClickListener(this);
-        usersAdapter.setOnItemLongClickListener(this);
-        rvUsers.setAdapter(usersAdapter);
+        profilesAdapter = new ProfilesAdapter(profiles, this, this);
+        rvProfiles.setAdapter(profilesAdapter);
     }
 
     @Override
-    public void hideUser(ProfileDto user) {
-        usersAdapter.removeItem(user);
+    public void hideProfile(Profile profile) {
+        profilesAdapter.removeItem(profile);
 
-        if (usersAdapter.getItemCount() == 0) {
-            tvNoUsers.setVisibility(View.VISIBLE);
-        }
+        if (profilesAdapter.getItemCount() == 0)
+            tvNoProfiles.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void showGetUsersProgress() {
-        pbGettingUsers.setVisibility(View.VISIBLE);
+    public void showGetProfilesProgress() {
+        pbGettingProfiles.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void hideGetUsersProgress() {
-        pbGettingUsers.setVisibility(View.GONE);
+    public void hideGetProfilesProgress() {
+        pbGettingProfiles.setVisibility(View.GONE);
     }
 
     @Override
-    public void showDeleteUserProgress() {
+    public void showDeleteProfileProgress() {
         pdDeletingProgress = createProgressDialog(R.string.deleting);
         pdDeletingProgress.show();
     }
 
     @Override
-    public void hideDeleteUserProgress() {
+    public void hideDeleteProfileProgress() {
         pdDeletingProgress.hide();
     }
 
@@ -171,18 +161,18 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
     }
 
     @Override
-    public void showCreateUserView() {
-
+    public void showCreateProfileView() {
+        navigator.navigateToCreateProfileView();
     }
 
     @Override
-    public void showEditUserView(ProfileDto editableUser) {
-//        animator.animateTitleChanging(R.string.title_edit_user);
+    public void showEditProfileView(Profile editableProfile) {
+        navigator.navigateToEditProfileView(editableProfile);
     }
 
     @Override
-    public void showContactsView(ProfileDto user) {
-        navigator.navigateToContactsView(user);
+    public void showContactsView(Profile profile) {
+        navigator.navigateToContactsView(profile);
     }
 
     @Override
@@ -192,77 +182,51 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
 
     @Override
     public void showError(Error error) {
-        String errorMessage = "";
-
-        switch (error) {
-            case NETWORK_IS_NOT_AVAILABLE:
-                errorMessage = getString(R.string.error_network_is_not_avaliable);
-                break;
-            case CONNECTION_FAILED:
-                errorMessage = getString(R.string.error_connection_failed);
-                break;
-        }
-
+        String errorMessage = getErrorMessage(error);
         createToast(errorMessage).show();
     }
 
     @OnClick(R.id.fab)
     public void onFabClick() {
-        mvpPresenter.navigateToCreateUser();
+        mvpPresenter.navigateToCreateProfile();
     }
 
     @Override
     public void onItemClick(int position) {
-        ProfileDto user = usersAdapter.getItem(position);
-        mvpPresenter.navigateToContacts(user);
+        Profile profile = profilesAdapter.getItem(position);
+        mvpPresenter.navigateToContacts(profile);
     }
 
     @Override
     public void onItemLongClick(int position) {
-        ProfileDto user = usersAdapter.getItem(position);
+        Profile profile = profilesAdapter.getItem(position);
+        createProfileActionsAlertDialog(profile).show();
+    }
 
-        new AlertDialog.Builder(getContext())
-                .setTitle(user.getUsername())
+    private AlertDialog createProfileActionsAlertDialog(Profile profile) {
+        return new AlertDialog.Builder(getContext())
+                .setTitle(profile.getName())
                 .setItems(R.array.user_actions, (dialogInterface, index) -> {
                     switch (index) {
                         case DIALOG_ITEM_EDIT:
-                            onUserItemEdit(user);
+                            onProfileItemEdit(profile);
                             break;
                         case DIALOG_ITEM_DELETE:
-                            onUserItemDelete(user);
+                            onProfileItemDelete(profile);
                             break;
                     }
-                })
-                .show();
+                }).create();
     }
 
-    private void setupActionBar() {
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+    private void onProfileItemEdit(Profile profile) {
+        mvpPresenter.navigateToEditProfile(profile);
     }
 
-    private void onUserItemEdit(ProfileDto user) {
-        mvpPresenter.navigateToEditUser(user);
-    }
-
-    private void onUserItemDelete(ProfileDto user) {
+    private void onProfileItemDelete(Profile profile) {
         new AlertDialog.Builder(getContext())
                 .setMessage(R.string.deleting_confirmation)
-                .setPositiveButton(R.string.ok, (dialogInterface, i) -> mvpPresenter.deleteUser(user))
+                .setPositiveButton(R.string.ok, (dialogInterface, i) -> mvpPresenter.deleteProfile(profile))
                 .setNegativeButton(R.string.cancel, null)
                 .show();
-    }
-
-    private ProgressDialog createProgressDialog(@StringRes int messageResId) {
-        ProgressDialog pd = new ProgressDialog(getContext());
-        pd.setMessage(getString(messageResId));
-        pd.setCancelable(false);
-        pd.show();
-        return pd;
-    }
-
-    private Toast createToast(String errorMessage) {
-        Toast toast = Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        return toast;
     }
 }

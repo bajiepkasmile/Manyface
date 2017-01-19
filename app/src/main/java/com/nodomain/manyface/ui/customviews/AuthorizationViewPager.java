@@ -21,11 +21,7 @@ public class AuthorizationViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (enabled) {
-            return super.onTouchEvent(ev);
-        } else {
-            return false;
-        }
+        return enabled && super.onTouchEvent(ev);
     }
 
     @Override

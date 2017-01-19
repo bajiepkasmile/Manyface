@@ -22,19 +22,6 @@ public class MainActivity extends AppCompatActivity {
         return ((MainActivity) activity).mainActivitySubComponent;
     }
 
-    public static class OnPickPhotoEvent {
-
-        private String photoFilePath;
-
-        public OnPickPhotoEvent(String photoFilePath) {
-            this.photoFilePath = photoFilePath;
-        }
-
-        public String getPhotoFilePath() {
-            return photoFilePath;
-        }
-    }
-
     @Inject
     MainNavigator navigator;
 
@@ -46,17 +33,8 @@ public class MainActivity extends AppCompatActivity {
         mainActivitySubComponent.inject(this);
 
         if (savedInstanceState == null) {
-            navigator.navigateToUsersView();
+            navigator.navigateToProfilesView();
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-//        if (fragmentManager.getBackStackEntryCount() > 0) {
-//            popBackStack();
-//        } else {
-//            super.onBackPressed();
-//        }
     }
 
     private void initActivitySubComponent() {

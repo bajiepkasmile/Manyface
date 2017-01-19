@@ -6,6 +6,7 @@ import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
 import com.nodomain.manyface.model.Message;
 import com.nodomain.manyface.model.Message.Status;
 import com.nodomain.manyface.model.Profile;
+import com.nodomain.manyface.utils.TimeConverter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class DtoMapper {
     }
 
     public static Message fromDto(MessageDto messageDto) {
-        long sentTime = TimeConverter.stringToTime(messageDto.sentTime);
+        long sentTime = TimeConverter.fullDateStringToTime(messageDto.sentTime);
         Status status = messageDto.isRead ? Status.READ : Status.UNREAD;
         return Message.createReceived(messageDto.text, sentTime, messageDto.senderId, status);
     }
@@ -52,7 +53,7 @@ public class DtoMapper {
         MessageDto messageDto = new MessageDto();
         messageDto.text = message.getText();
         messageDto.senderId = message.getSenderId();
-        messageDto.sentTime = TimeConverter.timeToSting(message.getSentTime());
+        messageDto.sentTime = TimeConverter.timeToFullDateString(message.getSentTime());
         messageDto.isRead = message.getStatus() == Status.READ;
         return messageDto;
     }

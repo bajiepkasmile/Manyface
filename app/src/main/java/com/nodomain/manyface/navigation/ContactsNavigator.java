@@ -1,14 +1,14 @@
 package com.nodomain.manyface.navigation;
 
 
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
+import com.nodomain.manyface.model.Profile;
 
 
 public interface ContactsNavigator {
 
-    void navigateToChatView(ProfileDto currentUser, ProfileDto contact);
+    void navigateToChatView(Profile currentProfile, Profile contact);
 
-    void navigateToContactDetailsView(ProfileDto contact);
+    void navigateToContactDetailsView(Profile contact);
 
     void navigateToPreviousView();
 }

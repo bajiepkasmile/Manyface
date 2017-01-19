@@ -13,10 +13,10 @@
     >
 
     <com.nodomain.manyface.ui.customviews.RoundedImageView
-        android:id="@+id/iv_photo"
+        android:id="@+id/iv_picture"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/photo_placeholder"
+        android:src="@drawable/picture_placeholder"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -25,7 +25,7 @@
         android:id="@+id/tv_messages_count"
         android:layout_height="28dp"
         android:layout_width="28dp"
-        app:layout_constraintRight_toRightOf="@+id/iv_photo"
+        app:layout_constraintRight_toRightOf="@+id/iv_picture"
         app:layout_constraintLeft_toLeftOf="@+id/iv_photo"
         app:layout_constraintHorizontal_bias="1.2"
         app:layout_constraintTop_toTopOf="@+id/iv_photo"
@@ -35,7 +35,7 @@
         />
 
     <TextView
-        android:id="@+id/tv_username"
+        android:id="@+id/tv_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"

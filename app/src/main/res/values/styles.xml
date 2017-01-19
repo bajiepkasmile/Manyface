@@ -45,34 +45,34 @@
         <item name="backgroundTint">@color/primary</item>
     </style>
 
-    <style name="TextViewUserItem">
+    <style name="TextViewProfileItem">
         <item name="android:padding">4dp</item>
     </style>
 
-    <style name="TextViewUserItem.Username" parent="TextViewUserItem">
+    <style name="TextViewProfileItem.Username" parent="TextViewProfileItem">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="TextViewUserItem.Description" parent="TextViewUserItem">
+    <style name="TextViewProfileItem.Description" parent="TextViewProfileItem">
         <item name="android:textColor">@color/gray</item>
         <item name="android:textSize">16sp</item>
     </style>
 
 
-    <style name="EditTextEditableUser">
+    <style name="EditTextEditableProfile">
         <item name="android:padding">4dp</item>
         <item name="android:background">@color/transparent</item>
     </style>
 
-    <style name="EditTextEditableUser.Username" parent="EditTextEditableUser">
-        <item name="android:hint">@string/username</item>
+    <style name="EditTextEditableProfile.Name" parent="EditTextEditableProfile">
+        <item name="android:hint">@string/profile_name</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
         <item name="android:inputType">textPersonName</item>
     </style>
 
-    <style name="EditTextEditableUser.Description" parent="EditTextEditableUser">
+    <style name="EditTextEditableProfile.Description" parent="EditTextEditableProfile">
         <item name="android:hint">@string/description</item>
         <item name="android:textColor">@color/gray</item>
         <item name="android:textSize">16sp</item>
@@ -89,7 +89,7 @@
         <item name="android:background">@drawable/background_messages_count</item>
     </style>
 
-    <!--<style name="ButtonUserItem" parent="Widget.AppCompat.Button.Borderless">-->
+    <!--<style name="ButtonProfileItem" parent="Widget.AppCompat.Button.Borderless">-->
         <!--<item name="android:textColor">@color/primary_dark</item>-->
         <!--<item name="android:minWidth">0dp</item>-->
         <!--<item name="android:minHeight">0dp</item>-->

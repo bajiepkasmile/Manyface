@@ -1,7 +1,6 @@
 package com.nodomain.manyface.data.datasources.remote;
 
 
-import com.nodomain.manyface.data.datasources.remote.impl.AccountManager;
 import com.nodomain.manyface.data.datasources.remote.impl.ApiConstants;
 import com.nodomain.manyface.data.datasources.remote.impl.DtoMapper;
 import com.nodomain.manyface.data.datasources.remote.impl.ManyfaceApi;

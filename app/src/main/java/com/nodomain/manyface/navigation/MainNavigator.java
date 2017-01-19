@@ -4,17 +4,19 @@ package com.nodomain.manyface.navigation;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
-import com.nodomain.manyface.data.datasources.remote.impl.dtos.ProfileDto;
+import com.nodomain.manyface.model.Profile;
 import com.nodomain.manyface.ui.activities.AuthorizationActivity;
 import com.nodomain.manyface.ui.fragments.ChatFragment;
 import com.nodomain.manyface.ui.fragments.ContactDetailsFragment;
 import com.nodomain.manyface.ui.fragments.ContactsFragment;
+import com.nodomain.manyface.ui.fragments.CreateProfileFragment;
+import com.nodomain.manyface.ui.fragments.EditProfileFragment;
 import com.nodomain.manyface.ui.fragments.ProfilesFragment;
 
 import javax.inject.Inject;
 
 
-public class MainNavigator extends BaseNavigator implements UsersNavigator, ContactsNavigator, ChatNavigator {
+public class MainNavigator extends BaseNavigator implements ProfilesNavigator, ContactsNavigator, ChatNavigator {
 
 
     @Inject
@@ -23,12 +25,12 @@ public class MainNavigator extends BaseNavigator implements UsersNavigator, Cont
     }
 
     @Override
-    public void navigateToChatView(ProfileDto currentUser, ProfileDto contact) {
-        replaceFragmentAndAddToBackStack(ChatFragment.newInstance(currentUser, contact));
+    public void navigateToChatView(Profile currentProfile, Profile contact) {
+        replaceFragmentAndAddToBackStack(ChatFragment.newInstance(currentProfile, contact));
     }
 
     @Override
-    public void navigateToContactDetailsView(ProfileDto contact) {
+    public void navigateToContactDetailsView(Profile contact) {
         showDialogFragment(ContactDetailsFragment.newInstance(contact));
     }
 
@@ -38,8 +40,8 @@ public class MainNavigator extends BaseNavigator implements UsersNavigator, Cont
     }
 
     @Override
-    public void navigateToContactsView(ProfileDto selectedUser) {
-        replaceFragmentAndAddToBackStack(ContactsFragment.newInstance(selectedUser));
+    public void navigateToContactsView(Profile profile) {
+        replaceFragmentAndAddToBackStack(ContactsFragment.newInstance(profile));
     }
 
     @Override
@@ -48,7 +50,17 @@ public class MainNavigator extends BaseNavigator implements UsersNavigator, Cont
         startNewActivityAndFinishCurrent(intent);
     }
 
-    public void navigateToUsersView() {
+    @Override
+    public void navigateToCreateProfileView() {
+        replaceFragment(CreateProfileFragment.newInstance());
+    }
+
+    @Override
+    public void navigateToEditProfileView(Profile editableProfile) {
+        replaceFragment(EditProfileFragment.newInstance(editableProfile));
+    }
+
+    public void navigateToProfilesView() {
         replaceFragment(ProfilesFragment.newInstance());
     }
 }

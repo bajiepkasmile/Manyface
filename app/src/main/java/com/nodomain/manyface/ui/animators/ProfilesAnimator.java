@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class UsersAnimator {
+public class ProfilesAnimator {
 
 //    @BindView(R.id.viewLogoBackground)
 //    View viewLogoBackground;
@@ -31,7 +31,7 @@ public class UsersAnimator {
     private Unbinder unbinder;
 
     @Inject
-    public UsersAnimator() {
+    public ProfilesAnimator() {
     }
 
     public void bind(View view) {

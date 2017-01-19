@@ -1,10 +1,11 @@
-package com.nodomain.manyface.data.datasources.remote.impl;
+package com.nodomain.manyface.data.datasources.remote;
 
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.nodomain.manyface.data.datasources.remote.impl.ApiConstants.HttpCodes;
+import com.nodomain.manyface.data.datasources.remote.impl.ManyfaceApi;
 import com.nodomain.manyface.domain.exeptions.AccountAlreadyExistsException;
 import com.nodomain.manyface.domain.exeptions.ConnectionFailedException;
 import com.nodomain.manyface.domain.exeptions.IncorrectAuthorizationInfoException;

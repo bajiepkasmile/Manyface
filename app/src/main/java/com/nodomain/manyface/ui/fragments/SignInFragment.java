@@ -85,40 +85,25 @@ public class SignInFragment extends BaseFragment<SignInMvpPresenter> implements 
     }
 
     @Override
-    public void showUsersView() {
-        animator.animateNavigationToUsersView(navigator::navigateToUsersView);
+    public void showProfilesView() {
+        animator.animateNavigationToUsersView(navigator::navigateToProfilesView);
     }
 
     @Override
     public void showError(Error error) {
         switch (error) {
-            case NETWORK_IS_NOT_AVAILABLE:
-                showErrorMessageFromStringRes(R.string.error_network_is_not_avaliable);
-                break;
-            case CONNECTION_FAILED:
-                showErrorMessageFromStringRes(R.string.error_connection_failed);
-                break;
             case EMPTY_LOGIN:
-                highlightEditTextWithErrorColor(etLogin);
-                showErrorMessageFromStringRes(R.string.error_empty_field);
-                break;
-            case EMPTY_PASSWORD:
-                highlightEditTextWithErrorColor(etPassword);
-                showErrorMessageFromStringRes(R.string.error_empty_field);
-                break;
             case ILLEGAL_CHARACTERS_IN_LOGIN:
                 highlightEditTextWithErrorColor(etLogin);
-                showErrorMessageFromStringRes(R.string.error_illegal_characters);
                 break;
+            case EMPTY_PASSWORD:
             case ILLEGAL_CHARACTERS_IN_PASSWORD:
                 highlightEditTextWithErrorColor(etPassword);
-                showErrorMessageFromStringRes(R.string.error_illegal_characters);
-                break;
-            case INCORRECT_LOGIN_AND_PASSWORD_COMBINATION:
-                showErrorMessageFromStringRes(R.string.error_incorrect_login_and_password_combination);
                 break;
         }
 
+        String errorMessage = getErrorMessage(error);
+        tvError.setText(errorMessage);
         animator.animateErrorAppearance();
     }
 
@@ -155,10 +140,6 @@ public class SignInFragment extends BaseFragment<SignInMvpPresenter> implements 
 
     private void highlightEditTextWithErrorColor(EditText et) {
         et.getBackground().setColorFilter(errorColor, PorterDuff.Mode.SRC_ATOP);
-    }
-
-    private void showErrorMessageFromStringRes(@StringRes int resId) {
-        tvError.setText(getString(resId));
     }
 
     private void setOnFirstGlobalLayoutListener(View view) {

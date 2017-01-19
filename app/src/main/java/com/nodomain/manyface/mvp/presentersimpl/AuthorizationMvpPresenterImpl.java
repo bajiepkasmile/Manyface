@@ -1,7 +1,7 @@
 package com.nodomain.manyface.mvp.presentersimpl;
 
 
-import com.nodomain.manyface.data.datasources.remote.impl.AccountManager;
+import com.nodomain.manyface.data.datasources.remote.AccountManager;
 import com.nodomain.manyface.domain.interactors.SignInInteractor.*;
 import com.nodomain.manyface.domain.interactors.SignUpInteractor.*;
 import com.nodomain.manyface.mvp.presenters.AuthorizationMvpPresenter;

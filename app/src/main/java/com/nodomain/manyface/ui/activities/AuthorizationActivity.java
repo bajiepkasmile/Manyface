@@ -61,7 +61,7 @@ public class AuthorizationActivity extends AppCompatActivity implements Authoriz
         authorizationActivitySubComponent.inject(this);
 
         mvpPresenter.attachMvpView(this);
-        mvpPresenter.navigateToUsers();
+        mvpPresenter.navigateToProfiles();
 
         ButterKnife.bind(this);
         initViewPager();
@@ -76,8 +76,8 @@ public class AuthorizationActivity extends AppCompatActivity implements Authoriz
     }
 
     @Override
-    public void showUsersView() {
-        navigator.navigateToUsersView();
+    public void showProfilesView() {
+        navigator.navigateToProfilesView();
     }
 
     @Override

@@ -17,11 +17,11 @@
         />
 
     <com.nodomain.manyface.ui.customviews.RoundedImageView
-        android:id="@+id/iv_photo"
+        android:id="@+id/iv_picture"
         android:layout_width="112dp"
         android:layout_height="112dp"
         android:layout_marginBottom="32dp"
-        android:src="@drawable/take_photo_placeholder"
+        android:src="@drawable/take_picture_placeholder"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -30,7 +30,7 @@
         />
 
     <EditText
-        android:id="@+id/et_username"
+        android:id="@+id/et_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"

@@ -14,21 +14,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class UserViewHolder extends ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+public class ProfileViewHolder extends ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-    @BindView(R.id.iv_photo)
-    public ImageView ivPhoto;
-    @BindView(R.id.tv_username)
-    public TextView tvUsername;
+    @BindView(R.id.iv_picture)
+    public ImageView ivPicture;
+    @BindView(R.id.tv_name)
+    public TextView tvName;
     @BindView(R.id.tv_description)
     public TextView tvDescription;
 
     private final OnItemClickListener onClickListener;
     private final OnItemLongClickListener onLongClickListener;
 
-    public UserViewHolder(View itemView,
-                          OnItemClickListener onClickListener,
-                          OnItemLongClickListener onLongClickListener) {
+    public ProfileViewHolder(View itemView,
+                             OnItemClickListener onClickListener,
+                             OnItemLongClickListener onLongClickListener) {
         super(itemView);
         ButterKnife.bind(this, itemView);
 
@@ -41,18 +41,12 @@ public class UserViewHolder extends ViewHolder implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        if (onClickListener != null) {
-            onClickListener.onItemClick(getAdapterPosition());
-        }
+        onClickListener.onItemClick(getAdapterPosition());
     }
 
     @Override
     public boolean onLongClick(View v) {
-        if (onLongClickListener != null) {
-            onLongClickListener.onItemLongClick(getAdapterPosition());
-            return true;
-        } else {
-            return false;
-        }
+        onLongClickListener.onItemLongClick(getAdapterPosition());
+        return true;
     }
 }

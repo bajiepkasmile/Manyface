@@ -81,52 +81,30 @@ public class SignUpFragment extends BaseFragment<SignUpMvpPresenter> implements 
     }
 
     @Override
-    public void showUsersView() {
-        animator.animateNavigationToUsersView(navigator::navigateToUsersView);
+    public void showProfilesView() {
+        animator.animateNavigationToUsersView(navigator::navigateToProfilesView);
     }
 
     @Override
     public void showError(Error error) {
         switch (error) {
-            case NETWORK_IS_NOT_AVAILABLE:
-                showErrorMessageFromStringRes(R.string.error_network_is_not_avaliable);
-                break;
-            case CONNECTION_FAILED:
-                showErrorMessageFromStringRes(R.string.error_connection_failed);
-                break;
             case EMPTY_LOGIN:
-                highlightEditTextWithError(etLogin);
-                showErrorMessageFromStringRes(R.string.error_empty_field);
-                break;
-            case EMPTY_PASSWORD:
-                highlightEditTextWithError(etPassword);
-                showErrorMessageFromStringRes(R.string.error_empty_field);
-                break;
-            case EMPTY_PASSWORD_CONFIRMATION:
-                highlightEditTextWithError(etPasswordConfirmation);
-                showErrorMessageFromStringRes(R.string.error_empty_field);
-                break;
             case ILLEGAL_CHARACTERS_IN_LOGIN:
                 highlightEditTextWithError(etLogin);
-                showErrorMessageFromStringRes(R.string.error_illegal_characters);
                 break;
+            case EMPTY_PASSWORD:
             case ILLEGAL_CHARACTERS_IN_PASSWORD:
                 highlightEditTextWithError(etPassword);
-                showErrorMessageFromStringRes(R.string.error_illegal_characters);
                 break;
+            case EMPTY_PASSWORD_CONFIRMATION:
             case ILLEGAL_CHARACTERS_IN_PASSWORD_CONFIRMATION:
-                highlightEditTextWithError(etPasswordConfirmation);
-                showErrorMessageFromStringRes(R.string.error_illegal_characters);
-                break;
             case INCORRECT_PASSWORD_CONFIRMATION:
                 highlightEditTextWithError(etPasswordConfirmation);
-                showErrorMessageFromStringRes(R.string.error_incorrect_password_confirmation);
-                break;
-            case ACCOUNT_ALREADY_EXISTS:
-                tvError.setText(getString(R.string.error_account_already_exists));
                 break;
         }
 
+        String errorMessage = getErrorMessage(error);
+        tvError.setText(errorMessage);
         animator.animateErrorAppearance();
     }
 
@@ -159,9 +137,5 @@ public class SignUpFragment extends BaseFragment<SignUpMvpPresenter> implements 
 
     private void highlightEditTextWithError(EditText et) {
         et.getBackground().setColorFilter(errorColor, PorterDuff.Mode.SRC_ATOP);
-    }
-
-    private void showErrorMessageFromStringRes(@StringRes int resId) {
-        tvError.setText(getString(resId));
     }
 }

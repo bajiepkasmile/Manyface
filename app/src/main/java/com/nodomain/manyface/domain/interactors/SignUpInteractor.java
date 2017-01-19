@@ -3,7 +3,7 @@ package com.nodomain.manyface.domain.interactors;
 
 import android.os.Handler;
 
-import com.nodomain.manyface.data.datasources.remote.impl.AccountManager;
+import com.nodomain.manyface.data.datasources.remote.AccountManager;
 import com.nodomain.manyface.domain.exeptions.AccountAlreadyExistsException;
 import com.nodomain.manyface.domain.exeptions.ConnectionFailedException;
 import com.nodomain.manyface.domain.Error;

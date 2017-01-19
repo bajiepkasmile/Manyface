@@ -17,7 +17,7 @@
         />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_users"
+        android:id="@+id/rv_profiles"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
@@ -25,7 +25,7 @@
         />
 
     <TextView
-        android:id="@+id/tv_no_users"
+        android:id="@+id/tv_no_profiles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -39,7 +39,7 @@
         />
 
     <ProgressBar
-        android:id="@+id/pb_getting_users"
+        android:id="@+id/pb_getting_profiles"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_gravity="center"

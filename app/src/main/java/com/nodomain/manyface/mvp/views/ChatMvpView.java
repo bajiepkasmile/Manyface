@@ -19,6 +19,8 @@ public interface ChatMvpView extends MvpView {
 
     void showSendMessageError(Message unsentMessage);
 
+    void hideMessage(Message message);
+
     void showGetMessagesProgress();
 
     void hideGetMessagesProgress();

@@ -3,5 +3,5 @@ package com.nodomain.manyface.navigation;
 
 public interface SignUpNavigator {
 
-    void navigateToUsersView();
+    void navigateToProfilesView();
 }

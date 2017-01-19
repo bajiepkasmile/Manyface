@@ -4,7 +4,7 @@ package com.nodomain.manyface.di.modules;
 import android.content.Context;
 
 import com.nodomain.manyface.data.datasources.local.impl.DbHelper;
-import com.nodomain.manyface.data.datasources.remote.impl.AccountManager;
+import com.nodomain.manyface.data.datasources.remote.AccountManager;
 import com.nodomain.manyface.data.datasources.remote.impl.ApiConstants;
 import com.nodomain.manyface.data.datasources.remote.impl.ManyfaceApi;
 

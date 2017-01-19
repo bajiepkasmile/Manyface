@@ -67,6 +67,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
+    <ProgressBar
+        android:id="@+id/pb_getting_messages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
     <ImageView
         android:id="@+id/iv_send"
 

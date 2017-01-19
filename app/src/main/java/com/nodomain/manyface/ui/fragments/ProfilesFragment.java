@@ -14,8 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.nodomain.manyface.R;
 import com.nodomain.manyface.domain.Error;
@@ -47,8 +47,8 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
     Toolbar toolbar;
     @BindView(R.id.rv_profiles)
     RecyclerView rvProfiles;
-    @BindView(R.id.tv_no_profiles)
-    TextView tvNoProfiles;
+    @BindView(R.id.ll_no_profiles)
+    LinearLayout llNoProfiles;
     @BindView(R.id.pb_getting_profiles)
     ProgressBar pbGettingProfiles;
     @BindView(R.id.fab)
@@ -110,11 +110,11 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
     @Override
     public void showProfiles(List<Profile> profiles) {
         if (profiles.size() == 0) {
-            tvNoProfiles.setVisibility(View.VISIBLE);
+            llNoProfiles.setVisibility(View.VISIBLE);
             return;
         }
 
-        tvNoProfiles.setVisibility(View.GONE);
+        llNoProfiles.setVisibility(View.GONE);
 
         profilesAdapter = new ProfilesAdapter(profiles, this, this);
         rvProfiles.setAdapter(profilesAdapter);
@@ -125,7 +125,7 @@ public class ProfilesFragment extends BaseFragment<ProfilesMvpPresenter>
         profilesAdapter.removeItem(profile);
 
         if (profilesAdapter.getItemCount() == 0)
-            tvNoProfiles.setVisibility(View.VISIBLE);
+            llNoProfiles.setVisibility(View.VISIBLE);
     }
 
     @Override

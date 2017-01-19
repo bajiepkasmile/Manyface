@@ -33,7 +33,7 @@
     </style>
 
     <style name="TextViewAuthorizationError">
-        <item name="android:textColor">@color/accent</item>
+        <item name="android:textColor">@color/deeppink</item>
         <item name="android:gravity">center</item>
         <item name="android:visibility">gone</item>
     </style>
@@ -49,7 +49,7 @@
         <item name="android:padding">4dp</item>
     </style>
 
-    <style name="TextViewProfileItem.Username" parent="TextViewProfileItem">
+    <style name="TextViewProfileItem.Name" parent="TextViewProfileItem">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
@@ -79,21 +79,25 @@
         <item name="android:inputType">none</item>
     </style>
 
-
-
     <style name="TextViewMessagesCount">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:visibility">gone</item>
         <item name="android:background">@drawable/background_messages_count</item>
     </style>
 
-    <!--<style name="ButtonProfileItem" parent="Widget.AppCompat.Button.Borderless">-->
-        <!--<item name="android:textColor">@color/primary_dark</item>-->
-        <!--<item name="android:minWidth">0dp</item>-->
-        <!--<item name="android:minHeight">0dp</item>-->
-        <!--<item name="android:padding">12dp</item>-->
-    <!--</style>-->
+    <style name="TextViewEmptyListHint">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+    </style>
+
+    <style name="ImageViewEmptyListHint">
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/circle_gray</item>
+    </style>
 
 </resources>

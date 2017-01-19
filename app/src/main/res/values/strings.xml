@@ -13,11 +13,8 @@
     <string name="password_confirmation">Password confirmation:</string>
     <string name="sign_up">Sign up</string>
 
-    <!--Users-->
+    <!--Profiles-->
     <string name="title.my_profiles">My profiles</string>
-    <string name="title.create_profile">Creating new profile</string>
-    <string name="title.edit_profile">Editing user</string>
-
     <string name="sign_out">Sign out</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
@@ -29,23 +26,25 @@
     <string name="take_picture">Select picture</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
-    <string name="no_profiles">You don\'t have profiles.\nPress \"+\" to create new one.</string>
+    <string name="no_profiles">You don't have profiles.\nTo create new one press:</string>
 
-    <!--Create user-->
+    <!--Create profile-->
+    <string name="title.create_profile">Creating new profile</string>
     <string name="cancel_creation.title">Cancel creation?</string>
     <string name="cancel_creation.message">Profile will not be saved.</string>
     <string name="saving">Saving</string>
     <string name="profile_name">Profile name</string>
     <string name="description">Description</string>
 
-    <!--Edit user-->
+    <!--Edit profile-->
+    <string name="title.edit_profile">Editing user</string>
     <string name="cancel_editing.title">Cancel editing?</string>
     <string name="cancel_editing.message">Changes will not be saved.</string>
     <string name="saving_changes">Saving changes</string>
 
     <!--Contacts-->
     <string name="contacts_of">Contacts of %1$s</string>
-    <string name="no_contacts">You don\'t have any contacts.\nPress something to find new ones.</string>
+    <string name="no_contacts">You don't have any contacts.\nTo find new ones press:</string>
     <string name="search">Search for contacts</string>
 
     <!--Chat-->

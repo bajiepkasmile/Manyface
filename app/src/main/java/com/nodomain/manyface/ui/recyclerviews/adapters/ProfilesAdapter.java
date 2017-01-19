@@ -32,7 +32,7 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
 
     @Override
     public ProfileViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_profile, parent, false);
         return new ProfileViewHolder(itemView, clickListener, longClickListener);
     }
 

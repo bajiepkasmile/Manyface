@@ -24,19 +24,34 @@
         app:layoutManager="LinearLayoutManager"
         />
 
-    <TextView
-        android:id="@+id/tv_no_profiles"
+    <LinearLayout
+        android:id="@+id/ll_no_profiles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/no_users"
-        android:textSize="16sp"
-        android:textColor="@color/gray"
+        android:orientation="vertical"
         android:gravity="center"
         android:visibility="gone"
-        android:lineSpacingExtra="8dp"
         tools:visibility="visible"
-        />
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:text="@string/no_profiles"
+            style="@style/TextViewEmptyListHint"
+            />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_add"
+            style="@style/ImageViewEmptyListHint"
+            />
+
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/pb_getting_profiles"

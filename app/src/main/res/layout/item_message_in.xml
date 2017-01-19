@@ -1,23 +1,34 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android">
-
-<TextView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tv_text"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textSize="16sp"
-    android:textColor="@color/black"
-    android:maxWidth="240dp"
+    android:orientation="horizontal"
     android:padding="8dp"
-    android:background="@drawable/background_message_in"
-    tools:text="Text text text text text text text text text text"
-    android:layout_margin="8dp"
-    />
+    >
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:maxWidth="260dp"
+        android:padding="8dp"
+        android:elevation="2dp"
+        android:background="@drawable/background_message_in"
+        tools:text="Text text text text text text text text text text"
+        />
 
     <TextView
         android:id="@+id/tv_time"
-        layout_width=""
-        layout_height=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="bottom"
+        tools:text="16:52"
         />
+
 </LinearLayout>
